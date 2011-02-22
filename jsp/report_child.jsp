@@ -13,14 +13,16 @@
     </head>
     <body>
         <div class="container">
-            <h1>Missing Children Finder</h1>
-            <hr/>
+
+            <%@include file="shared/header.jsp" %>
+            
             <div class="span-6 border">
                 <%@include file="shared/child_search_form.jsp" %>
                 <hr/>
                 <%@include file="shared/report_missing_child.jsp" %>
             </div>
             <div class="span-18 last">
+                
                 <h2>Report a Missing Child</h2>
                 
                 <label>I have...</label>
@@ -28,6 +30,7 @@
                 <input type="radio" id="radio_orphaned_child" name="what_event" /><label for="radio_orphaned_child">found an orphaned child.</label>
                 
                 <h4>Basic Information</h4>
+                
                 <label>Name:</label>
                 <input type="text" class="title" />
                 
@@ -45,6 +48,42 @@
                 
                 <label>Photos:</label>
                 <a href="javacript: void(0);">Select</a>
+                
+                <h4>Child's Home Address</h4>
+                
+                <label>Home, Street:</label>
+                <input type="text" />
+                
+                <label>Locality:</label>
+                <input type="text">
+                
+                <label>City:</label>
+                <input type="text">
+                
+                <label>State:</label>
+                <input type="text">
+                
+                <label>Country</label>
+                <input type="text">
+                
+                <h4>Your Information</h4>
+                
+                <label>E-Mail Address:</label>
+                <input type="text" />
+                
+                <label>Full Name:</label>
+                <input type="text">
+                
+                <label>Phone:</label>
+                <input type="text">
+                
+                <input type="checkbox" id="remember_contact_information" />
+                <label for="remember_contact_information">Remember my contact information.</label>
+                
+                <input type="checkbox" id="i_vounteer" />
+                <label for"i_vounteer">I volunteer to help children living around my location get back to their homes.</label>
+                
+                <input type="button" value="Submit" />
                 
             </div>
         </div>
