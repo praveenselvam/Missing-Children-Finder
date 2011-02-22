@@ -1,0 +1,7 @@
+Refer http://help.github.com/ to know how to checkout this code to your local machine.
+
+Create a folder called "missing" inside your web server's webapps folder.
+
+Paste all the checked out code.
+
+Run http://localhost:8080/missing/jsp/ to view the home page.
