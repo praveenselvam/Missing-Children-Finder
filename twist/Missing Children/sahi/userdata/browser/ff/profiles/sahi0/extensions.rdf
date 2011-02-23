@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<RDF:RDF xmlns:NS1="http://www.mozilla.org/2004/em-rdf#"
+         xmlns:NC="http://home.netscape.com/NC-rdf#"
+         xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <RDF:Description RDF:about="urn:mozilla:item:{972ce4c6-7e08-4474-a285-3208198ce6fd}"
+                   NS1:installLocation="app-global"
+                   NS1:version="3.6.10"
+                   NS1:internalName="classic/1.0"
+                   NS1:locked="true"
+                   NS1:appManaged="true"
+                   NS1:name="Default"
+                   NS1:description="The default theme."
+                   NS1:creator="Mozilla"
+                   NS1:contributor="Mozilla Contributors">
+    <NS1:type NC:parseType="Integer">4</NS1:type>
+    <NS1:targetApplication RDF:resource="rdf:#$3GV2B2"/>
+  </RDF:Description>
+  <RDF:Description RDF:about="urn:mozilla:item:{01A8CA0A-4C96-465b-A49B-65C46FAD54F9}"
+                   NS1:installLocation="app-system-local"
+                   NS1:version="6.0"
+                   NS1:name="Adobe Contribute Toolbar"
+                   NS1:description="Adobe Contribute Plugin"
+                   NS1:creator="Adobe"
+                   NS1:homepageURL="http://www.adobe.com/">
+    <NS1:type NC:parseType="Integer">2</NS1:type>
+    <NS1:targetApplication RDF:resource="rdf:#$QFV2B2"/>
+  </RDF:Description>
+  <RDF:Description RDF:about="rdf:#$QFV2B2"
+                   NS1:id="{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
+                   NS1:minVersion="3.0"
+                   NS1:maxVersion="4.0.*" />
+  <RDF:Description RDF:about="rdf:#$3GV2B2"
+                   NS1:id="{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
+                   NS1:minVersion="3.6.10"
+                   NS1:maxVersion="3.6.10" />
+  <RDF:Seq RDF:about="urn:mozilla:item:root">
+    <RDF:li RDF:resource="urn:mozilla:item:{972ce4c6-7e08-4474-a285-3208198ce6fd}"/>
+    <RDF:li RDF:resource="urn:mozilla:item:{01A8CA0A-4C96-465b-A49B-65C46FAD54F9}"/>
+  </RDF:Seq>
+</RDF:RDF>

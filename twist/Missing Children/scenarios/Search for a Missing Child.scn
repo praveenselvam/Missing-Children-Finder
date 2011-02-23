@@ -1,0 +1,10 @@
+Tags:In-Progress
+Preconditions:At Home Page
+h1.When a user comes in with the intent to search for a missing child, he must be provided with the different opportunities to get closer to his intended data.
+
+Missing Child Search:
+$The Left Pane must be seen
+#Enter some information and hit Search
+#The number of children found should be "238"
+#The "Grid View" must be shown by default
+#The Child with name "Kannan" should be found in the list of results
