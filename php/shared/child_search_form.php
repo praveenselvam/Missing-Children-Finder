@@ -1,4 +1,4 @@
-<form action="/missing/jsp/search_results_grid.jsp">
+<form action="../../missing/php/search_results_grid.php">
     <h3>Search for a Child</h3>
     <dl>
         <dt>Name:</dt>

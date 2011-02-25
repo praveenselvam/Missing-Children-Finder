@@ -2,4 +2,4 @@
 <p>
     Have you lost a child? Or, have you found an orphaned child? Give us as much information as you can and we'll do our best to help the child get back.
 </p>
-<a href="/missing/jsp/report_child.jsp">Report</a>
+<a href="../../missing/php/report_child.php">Report</a>

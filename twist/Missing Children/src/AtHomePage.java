@@ -7,7 +7,7 @@ public class AtHomePage {
 
 	public AtHomePage(Browser browser) {
 		this.browser = browser;
-		browser.navigateTo("http://localhost:8080/missing/jsp/");
+		browser.navigateTo("http://localhost:8080/missing/php/");
 	}
 
 	public void setUp() throws Exception {

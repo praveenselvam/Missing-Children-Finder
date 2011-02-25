@@ -8,18 +8,18 @@
         <head>
             <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
             
-            <%@include file="shared/includes.jsp" %>
+            <?php include 'shared/includes.php'; ?>
         </head>
     </head>
     <body>
         <div class="container">
 
-            <%@include file="shared/header.jsp" %>
+            <?php include 'shared/header.php'; ?>
             
             <div class="span-6 border">
-                <%@include file="shared/child_search_form.jsp" %>
+                <?php include 'shared/child_search_form.php'; ?>
                 <hr/>
-                <%@include file="shared/report_missing_child.jsp" %>
+                <?php include 'shared/report_missing_child.php'; ?>
             </div>
             <div class="span-18 last">
                 

@@ -4,4 +4,4 @@ Create a folder called "missing" inside your web server's webapps folder.
 
 Paste all the checked out code.
 
-Run http://localhost:8080/missing/jsp/ to view the home page.
+Run http://localhost:8080/missing/php/ to view the home page.

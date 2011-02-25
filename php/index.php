@@ -8,27 +8,27 @@
         <head>
             <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
             
-            <%@include file="shared/includes.jsp" %>
+            <?php include 'shared/includes.php'; ?>
         </head>
     </head>
     <body>
         <div class="container">
             
-            <%@include file="shared/header.jsp" %>
+            <?php include 'shared/header.php'; ?>
             
             <div class="notice">
                 We believe you are in <strong>Chennai, Tamil Nadu, India</strong>. <a href="javascript: void(0);">I'm not from here.</a>
             </div>
             <div class="span-6 border">
-                <%@include file="shared/child_search_form.jsp" %>
+                <?php include 'shared/child_search_form.php'; ?>
                 <hr/>
-                <%@include file="shared/report_missing_child.jsp" %>
+                <?php include 'shared/report_missing_child.php'; ?>
             </div>
             <div class="span-12 border">
-                <%@include file="shared/current_location_children.jsp" %>
+                <?php include 'shared/current_location_children.php'; ?>
             </div>
             <div class="span-6 last">
-                <%@include file="shared/recently_missing_children.jsp" %>
+                <?php include 'shared/recently_missing_children.php'; ?>
             </div>
         </div>
     </body>
