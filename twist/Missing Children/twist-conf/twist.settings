@@ -1,6 +1,0 @@
-Sahi:
-	class: net.sf.sahi.client.Browser
-	fieldName: browser
-	project_path: /Users/praveenselvam/twist/twist.app/Contents/MacOS/workspace/Missing Children
-language:
-	class: com.thoughtworks.twist.language.java.Java

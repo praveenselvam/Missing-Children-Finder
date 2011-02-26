@@ -1,0 +1,14 @@
+Tags:Not Implemented
+Preconditions:In Report Page
+
+
+Select missing child, Enter Basic information, Address Information:
+#select the option to report <Option to select>
+$Enter Basic Information about the child as "Kannan" and "Male" and "13"
+$verify tile to be <address being captured> and Enter Address Information about the Child
+#Save the information and verify it
+
+Reporter Information:
+#Enter email as "person@domain.com"
+#Enter name as "Someone"
+#Enter phone as "9876543210"

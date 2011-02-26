@@ -1,0 +1,8 @@
+Tags:Smoke
+Preconditions:In Report Page
+
+
+Enter Basic information, Select missing child:
+#select the option to report <Option to select>
+$Enter Basic Information about the child as <Child name> and <Gender> and <Age>
+#Save the information and verify it

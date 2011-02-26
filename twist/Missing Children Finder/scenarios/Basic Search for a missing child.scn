@@ -1,0 +1,8 @@
+Tags:
+Preconditions:In Search Options
+Search Options:
+$Basic search info on "Kannan" and "13" and "Male"
+
+Search Results:
+#Search
+#Verify that a <Gender> child by name <Name of the Child> with age <Age> is shown in the results

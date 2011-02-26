@@ -1,0 +1,8 @@
+Tags:
+Preconditions:
+View child profile:
+$Basic search info on <Name> and <Age> and <Gender>
+#search
+#View profile of <Name>
+#Verify the Profile View and Details of <Name>
+

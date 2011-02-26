@@ -1,0 +1,6 @@
+Tags:
+Preconditions:
+End to End, View child profile:
+$Enter Basic Information about the child as "Kannan" and "Male" and "13"
+$Basic search info on "Kannan" and "13" and "Male"
+#

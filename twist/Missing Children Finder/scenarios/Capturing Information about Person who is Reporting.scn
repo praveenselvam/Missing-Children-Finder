@@ -1,0 +1,12 @@
+Tags:
+Preconditions:
+Enter Basic information:
+$Enter Basic Information about the child as "Kannan" and "Male" and "13"
+
+Reporter Information:
+#Enter name as <Name>
+#Enter email as <E Mail>
+#Enter phone as <Phone>
+
+Enter Basic information:
+#Save the information and verify it

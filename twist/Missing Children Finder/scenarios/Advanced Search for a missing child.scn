@@ -1,0 +1,12 @@
+Tags:
+Preconditions:
+
+
+Advance Search Options:
+$Basic search info on <Param0> and <Param1> and <Param2>
+#Enter home town as <Param3>
+
+
+Search Results:
+#Search
+#Verify that a <Param2> child by name <Param0> with age <Param1>  and contains <Param3> is shown in the results
