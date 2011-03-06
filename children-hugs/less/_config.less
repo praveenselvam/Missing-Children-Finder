@@ -1,0 +1,26 @@
+@primary-color:         Sienna;
+@pale-primary-color:    paleGoldenRod;
+@secondary-color:       SteelBlue;
+@pale-secondary-color:  SkyBlue;
+
+
+@standard-font:         Arial,"Helvetica Neue",Helvetica,sans-serif;
+
+
+.rounded_corners (@tl: 0.5em, @tr: 0.5em, @br: 0.5em, @bl: 0.5em) {
+  -moz-border-radius: @tl @tr @br @bl;
+  -webkit-border-radius: @tl @tr @br @bl;
+  border-radius: @tl @tr @br @bl;
+}
+
+.box_shadow (@x: 0, @y: 0, @width: 10px, @color: #ccc) {
+  -moz-box-shadow: @x @y @width @color;
+  -webkit-box-shadow: @x @y @width @color;
+  -box-shadow: @x @y @width @color;
+}
+
+.box_shadow_inset (@x: 0, @y: 0, @width: 10px, @color: #ccc) {
+  -moz-box-shadow: @x @y @width @color inset;
+  -webkit-box-shadow: @x @y @width @color inset;
+  -box-shadow: @x @y @width @color inset;
+}

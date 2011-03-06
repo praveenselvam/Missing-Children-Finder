@@ -1,4 +1,55 @@
+body { background-color: WhiteSmoke; }
+body .container {
+  padding: 10px;
+  background-color: white;
+  border-left: 1px solid #cccccc;
+  border-right: 1px solid #cccccc;
+  -moz-box-shadow: 0 0 10px #cccccc;
+  -webkit-box-shadow: 0 0 10px #cccccc;
+  -box-shadow: 0 0 10px #cccccc;
+}
+h1 {
+  color: Sienna;
+  margin-bottom: 30px;
+}
+h2 { color: SteelBlue; }
+h3 { color: Sienna; }
+.widget_box {
+  background-color: paleGoldenRod;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-top: 3px solid Sienna;
+  border-bottom: 1px solid Sienna;
+}
+fieldset {
+  padding: 10px 0;
+  border-color: SkyBlue;
+}
+fieldset legend {
+  margin-left: 10px;
+  color: SteelBlue;
+}
 .form label {
   text-align: right;
-  padding-top: 5px;
+  margin-top: 5px;
+  font-weight: normal;
+}
+.buttons {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.button {
+  background-color: SteelBlue;
+  border: 1px solid SteelBlue;
+  color: white;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+.no_bottom_space {
+  padding-bottom: 0;
+  margin-bottom: 0;
 }

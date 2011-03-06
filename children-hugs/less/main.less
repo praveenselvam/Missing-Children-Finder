@@ -1,9 +1,77 @@
 @import "_config";
 
+body{
+    background-color: WhiteSmoke;
+    
+    .container{
+        padding: 10px;
+        background-color: white;
+        border-left: 1px solid #ccc;
+        border-right: 1px solid #ccc;
+        .box_shadow();
+    }
+}
+
+h1{
+    color: @primary-color;
+    margin-bottom: 30px;
+}
+
+h2{
+    color: @secondary-color;
+}
+
+h3{
+    color: @primary-color;
+}
+
+.widget_box{
+    background-color: @pale-primary-color;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-top: 3px solid @primary-color;
+    border-bottom: 1px solid @primary-color;
+}
+
+fieldset{
+
+    padding: 10px 0;
+    border-color: @pale-secondary-color;
+    
+    legend{
+        margin-left: 10px;
+        color: @secondary-color;
+    }
+
+}
+
 .form{
 
     label{
         text-align: right;
-        padding-top: 5px;
+        margin-top: 5px;
+        font-weight: normal;
     }
+}
+
+.buttons{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.button{
+    background-color: @secondary-color;
+    border: 1px solid @secondary-color;
+    color: white;
+    font-family: @standard-font;
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+.no_bottom_space{
+    padding-bottom: 0;
+    margin-bottom: 0;
 }
