@@ -58,7 +58,7 @@
     	            </fieldset>
 	                
 	                <fieldset class="span-18 last">
-	                    <legend>Child's Home Address</legend>
+	                    <legend id="child_address_title">Child's Home Address</legend>
 	                
     	                <label class="span-3">Home, Street:</label>
     	                <input type="text" name="street" class="span-6" />
