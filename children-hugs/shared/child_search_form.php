@@ -4,24 +4,24 @@
         <h3>Search for a Child</h3>
         
         <label class="span-2 clear">Name:</label>
-        <input type="text" class="span-3 last" />
+        <input type="text" class="span-3 last" name="name"/>
         
         <label class="span-2 clear">Gender:</label>
         <div class="span-3 last">
-            <input type="radio" />
+            <input type="radio" name="gender"/>
             <label>M</label>
-            <input type="radio" />
+            <input type="radio" name="gender"/>
             <label>F</label>
         </div>
         
         <label class="span-2 clear">Age:</label>
-        <input type="text" class="span-3 last" />
+        <input type="text" class="span-3 last" name="age"/>
         
         <label class="span-2 clear">Origin:</label>
-        <input type="text" class="span-3 last" />
+        <input type="text" class="span-3 last" name="origin"/>
         
         <label class="span-2 clear">Duration:</label>
-        <select class="span-3 last">
+        <select class="span-3 last" name="duration">
             <option>1 month</option>
             <option>3 months</option>
             <option>1 year</option>

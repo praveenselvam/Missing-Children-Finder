@@ -52,4 +52,6 @@
 	{
 		echo "\"".$key."\" => \"".$value."\",";
 	}
+	// post the data to controller
+	// post($_POST);
 ?>

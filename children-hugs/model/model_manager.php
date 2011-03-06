@@ -59,7 +59,7 @@
 			   )
 			{
 				 $stmt = $PDO->prepare($sql);
-				 				 
+				 
 				 $result = $stmt->execute($params);
 				 $result_array = null;
 				 if($result >= 1)
@@ -69,11 +69,23 @@
 				 $stmt = null;
 				 return $result_array;
 				   
+			}else if($sql != null && gettype($sql) == "string"){
+				 $stmt = $PDO->prepare($sql);
+				 				 
+				 $result = $stmt->execute();
+				 $result_array = null;
+				 if($result >= 1)
+				 {
+				 	$result_array = $stmt->fetchAll();
+				 }				 
+				 $stmt = null;
+				 return $result_array;
 			}else{
 				//echo "SQL test = ".($sql != null && (gettype($sql) == "string") );
 				//echo "\n Pram test  =".((gettype($params)))."\n" ;
+				
 			}			
-			return null;	
+			return null;
 		}
 		
 	}

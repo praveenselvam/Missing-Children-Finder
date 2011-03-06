@@ -26,6 +26,22 @@
 											"i_vounteer" => "i_vounteer"
 										  );
 		
+		public static $SEARCH_CHILD_MAP = array(
+									"name" 				=> "name",
+									"age_range_start" 	=> "st_age",
+									"age_range_end" 	=> "end_age",
+									"gender"			=> "gender",
+									"origin"			=> "city"
+								);
+		
+		/* not used right now, will be making use of it soon. actually, this alias list 
+		 * will need to be updated for each table */
+		public static $TABLE_ALIAS_MAP = array (
+											"child" => "c",
+											"address" => "a"
+										);
+								
+		
 		/**
 		 * 
 		 * Iterate through the array $using, and look for values in $from
