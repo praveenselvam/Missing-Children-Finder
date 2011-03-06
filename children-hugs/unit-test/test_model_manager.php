@@ -4,7 +4,8 @@
 		public function run() {
 			 $test_complete_status = TRUE;
 			 
-			 $test_complete_status = $test_complete_status & self::test_read_record(null,null);			 
+			 $test_complete_status = $test_complete_status & $this->test_read_record(null,null);
+			 			 
 			 $write_sql = "insert into child(name,gender,dob,age,photo_url) 
 			 			   values(:name,:gender,:dob,:age,:photo_url)";
 			 $write_params = array(
@@ -14,10 +15,7 @@
 			 					   "age" => 21,
 			 					   "photo_url" => "http://www.abc.com/"
 			 					   );
-			  $test_complete_status = $test_complete_status & self::test_write_record($write_sql,$write_params);
-			  
-			  
-			  
+			 $test_complete_status = $test_complete_status & $this->test_write_record($write_sql,$write_params);
 			 echo "Test : ".($test_complete_status?"PASS":"FAIL")."\n";
 		}
 		
@@ -38,7 +36,8 @@
 			
 			$result = ModelManager::readRecord($sql, $param);
 			if(gettype($result) == 'array' && $result != null)
-			{  foreach($result as $row)
+			{  
+				foreach($result as $row)
 				{				
 					foreach($row as $key=>$value)
 					{

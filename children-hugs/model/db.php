@@ -30,7 +30,7 @@
 		public static function getInstance() {
 			if(!self::$instance)
 			{
-				self::$instance = new PDO(self::$dsn, self::$username, self::$passwd);
+				self::$instance = new PDO($this->$dsn, $this->$username, $this->$passwd);
 				self::$instance-> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			}
 			return self::$instance;

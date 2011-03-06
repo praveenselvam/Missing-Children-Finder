@@ -16,12 +16,9 @@
 
             <?php include 'shared/header.php'; ?>
             
-            <div class="span-6 border">
-                <?php include 'shared/child_search_form.php'; ?>
-                <hr/>
-                <?php include 'shared/report_missing_child.php'; ?>
-            </div>
-            <div class="span-18 last clearfix" id="report_missing_child_form">
+            <?php include 'shared/left_pane.php'; ?>
+            
+            <div class="span-18 last clearfix form" id="report_missing_child_form">
                 <form action="controller/report_missing.php" method="post">
 	                <h2>Report a Missing Child</h2>
 	                
@@ -90,22 +87,20 @@
 	                
     	                <label class="span-3 clear">Phone:</label>
     	                <input type="text" name="reporter_contact" class="span-6" />
-    	            </fieldset>
-	                
-	                <div class="section clearfix">
-    	                <div class="span-15 push-3 clear last">
+    	                
+    	                <div class="span-15 push-3 clear last no_bottom_space">
         	                <input type="checkbox" id="remember_contact_information" />
         	                <label for="remember_contact_information">Remember my contact information.</label>
         	            </div>
 	                
-    	                <div class="span-15 push-3 clear last">
+    	                <div class="span-15 push-3 clear last no_bottom_space">
         	                <input type="checkbox" id="i_vounteer" />
         	                <label for"i_vounteer">I volunteer to help children living around my location get back to their homes.</label>
         	            </div>
-        	        </div>
+    	            </fieldset>
 
 	                <div class="section clearfix">
-	                    <input type="submit" value="Submit" class="push-3" />
+	                    <input type="submit" value="Submit" class="push-3 span-2 button" />
 	                </div>
                 </form>
             </div>

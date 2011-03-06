@@ -19,11 +19,9 @@
             <div class="notice">
                 We believe you are in <strong>Chennai, Tamil Nadu, India</strong>. <a href="javascript: void(0);">I'm not from here.</a>
             </div>
-            <div class="span-6 border">
-                <?php include 'shared/child_search_form.php'; ?>
-                <hr/>
-                <?php include 'shared/report_missing_child.php'; ?>
-            </div>
+            
+            <?php include 'shared/left_pane.php'; ?>
+            
             <div class="span-12 border">
                 <?php include 'shared/current_location_children.php'; ?>
             </div>
