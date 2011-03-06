@@ -11,17 +11,23 @@ body .container {
 h1 {
   color: Sienna;
   margin-bottom: 30px;
+  font-family: SansationLight;
+  font-weight: normal;
 }
 h2 {
   color: #205791;
   border-top: 3px solid #205791;
   padding: 0 5px 3px;
+  font-family: SansationRegular;
+  font-weight: normal;
 }
 h3 {
   color: Sienna;
   border-bottom: 1px dashed Sienna;
   padding-bottom: 10px;
   text-shadow: 0px 0px 1px;
+  font-family: SansationRegular;
+  font-weight: normal;
 }
 .widget_box {
   background-color: paleGoldenRod;
