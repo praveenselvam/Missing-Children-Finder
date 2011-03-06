@@ -1,0 +1,4 @@
+Options +FollowSymLinks
+RewriteEngine on
+RewriteCond  %{DOCUMENT_ROOT}/controller/$1  !-f
+RewriteRule  ^controller/(.+)$               /controller/index.php?$1  [L,QSA]
