@@ -22,8 +22,8 @@
                 <form action="controller/report_missing.php" method="post">
 	                <h2>Report a Missing Child</h2>
 	                
-	                <div class="section clearfix">
-                        <h4 class="span-3">I have...</h4>
+	                <div class="section clearfix intent">
+                        <h4 class="span-3 text_right">I have...</h4>
                         <div class="span-15 last">
                             <input type="radio" id="radio_lost_child" name="what_event" />
                             <label for="radio_lost_child">lost a child.</label>
@@ -36,22 +36,28 @@
 	                <fieldset class="span-18 last">
 	                    <legend>Basic Information</legend>
 	                
-    	                <label class="span-3">Name:</label>
+    	                <label class="span-3 name">Name:</label>
     	                <input type="text" class="title span-14" />
 	                
     	                <label class="span-3">Gender:</label>
-    	                <div class="span-6 last">
-    	                    <input type="radio" name="gender" id="radio_gender_male_report"/>
-        	                <label for="radio_gender_male_report">Male</label>
-        	                <input type="radio" name="gender" id="radio_gender_female_report"/>
-        	                <label for="radio_gender_female_report">Female</label>
-        	            </div>
+    	                <div class="span-15 last">
+        	                <div class="span-6 last float_all_left clearfix gender">
+        	                    <input type="radio" name="gender" id="radio_gender_male_report"/>
+            	                <label for="radio_gender_male_report">Male</label>
+            	                <input type="radio" name="gender" id="radio_gender_female_report"/>
+            	                <label for="radio_gender_female_report">Female</label>
+            	            </div>
+            	        </div>
 	                
     	                <label class="span-3 clear">Date of Birth:</label>
-    	                <input type="text" name="dob" class="span-6" />
+    	                <div class="span-15 last">
+    	                    <input type="text" name="dob" class="span-6" />
+    	                </div>
 
     	                <label class="span-3 clear">Age:</label>
-    	                <input type="text" name="age" class="span-6" />
+    	                <div class="span-15 last">
+    	                    <input type="text" name="age" class="span-6" />
+    	                </div>
 	                
     	                <label class="span-3 clear">Photos:</label>
     	                <a href="javacript: void(0);" class="span-15 last">Select</a>
@@ -61,32 +67,48 @@
 	                    <legend id="child_address_title">Child's Home Address</legend>
 	                
     	                <label class="span-3">Home, Street:</label>
-    	                <input type="text" name="street" class="span-6" />
+    	                <div class="span-15 last">
+    	                    <input type="text" name="street" class="span-6" />
+    	                </div>
 	                
     	                <label class="span-3 clear">Locality:</label>
-    	                <input type="text" name="locality" class="span-6" >
+    	                <div class="span-15 last">
+    	                    <input type="text" name="locality" class="span-6" >
+    	                </div>
 	                
     	                <label class="span-3 clear">City:</label>
-    	                <input type="text" name="city" class="span-6" />
+    	                <div class="span-15 last">
+    	                    <input type="text" name="city" class="span-6" />
+    	                </div>
 	                
     	                <label class="span-3 clear">State:</label>
-    	                <input type="text" name="state" class="span-6" >
+    	                <div class="span-15 last">
+    	                    <input type="text" name="state" class="span-6" >
+    	                </div>
 	                
-    	                <label class="span-3 clear">Country</label>
-    	                <input type="text" name="country" class="span-6" >
+    	                <label class="span-3 clear">Country:</label>
+    	                <div class="span-15 last">
+    	                    <input type="text" name="country" class="span-6" >
+    	                </div>
     	            </fieldset>
 	                
 	                <fieldset class="span-18 last">
 	                    <legend>Your Information</legend>
 	                
     	                <label class="span-3">E-Mail Address:</label>
-    	                <input type="text" name="reporter_email" class="span-6" />
+    	                <div class="span-15 last">
+    	                    <input type="text" name="reporter_email" class="span-6" />
+    	                </div>
 	                
     	                <label class="span-3 clear">Full Name:</label>
-    	                <input type="text" name="reporter_name" class="span-6" />
+    	                <div class="span-15 last">
+    	                    <input type="text" name="reporter_name" class="span-6" />
+    	                </div>
 	                
     	                <label class="span-3 clear">Phone:</label>
-    	                <input type="text" name="reporter_contact" class="span-6" />
+    	                <div class="span-15 last">
+    	                    <input type="text" name="reporter_contact" class="span-6" />
+    	                </div>
     	                
     	                <div class="span-15 push-3 clear last no_bottom_space">
         	                <input type="checkbox" id="remember_contact_information" />

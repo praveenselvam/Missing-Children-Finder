@@ -30,7 +30,7 @@
                 <div class="span-9 last">
                     Map View
                     &nbsp;|&nbsp;
-                    <a href="../../missing/php/search_results_grid.php">Grid View</a>
+                    <a href="./search_results_grid.php">Grid View</a>
                 </div>
                 <iframe width="710" height="500" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?ie=UTF8&amp;hq=&amp;hnear=N+Parade+Rd,+Alandur,+Chennai,+Tamil+Nadu,+India&amp;ll=10.816445,78.697128&amp;spn=0.168611,0.243416&amp;z=12&amp;output=embed"></iframe>
             </div>

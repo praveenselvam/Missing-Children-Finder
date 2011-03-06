@@ -1,5 +1,5 @@
 <div id="search_child_widget" class="form clearfix widget_box">
-    <form action="../../missing/php/search_results_grid.php">
+    <form action="./search_results_grid.php">
         
         <h3>Search for a Child</h3>
         

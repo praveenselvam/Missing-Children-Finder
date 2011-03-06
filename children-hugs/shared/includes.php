@@ -18,7 +18,10 @@
 
 <link rel="stylesheet" href="./css/jquery/jquery-ui-1.8.10.custom.css" type="text/css" media="screen, projection">
 
+<link rel="stylesheet" href="./css/web-fonts.css" type="text/css" media="screen, projection">
+
 <!-- App CSS -->
 <link rel="stylesheet" href="./css/main.css" type="text/css" media="screen, print">
 <link rel="stylesheet" href="./css/search_child_widget.css" type="text/css" media="screen, print">
 <link rel="stylesheet" href="./css/report_child.css" type="text/css" media="screen, print">
+<link rel="stylesheet" href="./css/child_search_results.css" type="text/css" media="screen, print">
