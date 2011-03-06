@@ -72,7 +72,7 @@
 				 }*/
 				 $result = $stmt->execute($params);
 				 $result_array = null;
-				 if($result >=1)
+				 if($result >= 1)
 				 {
 				 	$result_array = $stmt->fetchAll();
 				 }				 
