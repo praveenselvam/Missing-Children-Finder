@@ -21,71 +21,92 @@
                 <hr/>
                 <?php include 'shared/report_missing_child.php'; ?>
             </div>
-            <div class="span-18 last">
+            <div class="span-18 last clearfix" id="report_missing_child_form">
                 <form action="controller/report_missing.php" method="post">
 	                <h2>Report a Missing Child</h2>
 	                
-	                <label>I have...</label>
-	                <input type="radio" id="radio_lost_child" name="what_event" />
-	                <label for="radio_lost_child">lost a child.</label>
-	                <input type="radio" id="radio_orphaned_child" name="what_event" />
-	                <label for="radio_orphaned_child">found an orphaned child.</label>
+	                <div class="section clearfix">
+                        <h4 class="span-3">I have...</h4>
+                        <div class="span-15 last">
+                            <input type="radio" id="radio_lost_child" name="what_event" />
+                            <label for="radio_lost_child">lost a child.</label>
+                            <br/>
+                            <input type="radio" id="radio_orphaned_child" name="what_event" />
+                            <label for="radio_orphaned_child">found an orphaned child.</label>
+                        </div>
+                    </div>
 	                
-	                <h4>Basic Information</h4>
+	                <fieldset class="span-18 last">
+	                    <legend>Basic Information</legend>
 	                
-	                <label>Name:</label>
-	                <input type="text" class="title" />
+    	                <label class="span-3">Name:</label>
+    	                <input type="text" class="title span-14" />
 	                
-	                <label>Gender:</label>
-	                <input type="radio" name="gender" id="radio_gender_male_report"/>
-	                <label for="radio_gender_male_report">Male</label>
-	                <input type="radio" name="gender" id="radio_gender_female_report"/>
-	                <label for="radio_gender_female_report">Female</label>
+    	                <label class="span-3">Gender:</label>
+    	                <div class="span-6 last">
+    	                    <input type="radio" name="gender" id="radio_gender_male_report"/>
+        	                <label for="radio_gender_male_report">Male</label>
+        	                <input type="radio" name="gender" id="radio_gender_female_report"/>
+        	                <label for="radio_gender_female_report">Female</label>
+        	            </div>
 	                
-	                <label>Date of Birth:</label>
-	                <input type="text" name="dob"/>
-	                <label>(OR)</label>
-	                <label>Age:</label>
-	                <input type="text" name="age"/>
+    	                <label class="span-3 clear">Date of Birth:</label>
+    	                <input type="text" name="dob" class="span-6" />
+
+    	                <label class="span-3 clear">Age:</label>
+    	                <input type="text" name="age" class="span-6" />
 	                
-	                <label>Photos:</label>
-	                <a href="javacript: void(0);">Select</a>
+    	                <label class="span-3 clear">Photos:</label>
+    	                <a href="javacript: void(0);" class="span-15 last">Select</a>
+    	            </fieldset>
 	                
-	                <h4>Child's Home Address</h4>
+	                <fieldset class="span-18 last">
+	                    <legend>Child's Home Address</legend>
 	                
-	                <label>Home, Street:</label>
-	                <input type="text" name="street"/>
+    	                <label class="span-3">Home, Street:</label>
+    	                <input type="text" name="street" class="span-6" />
 	                
-	                <label>Locality:</label>
-	                <input type="text" name="locality">
+    	                <label class="span-3 clear">Locality:</label>
+    	                <input type="text" name="locality" class="span-6" >
 	                
-	                <label>City:</label>
-	                <input type="text" name="city">
+    	                <label class="span-3 clear">City:</label>
+    	                <input type="text" name="city" class="span-6" />
 	                
-	                <label>State:</label>
-	                <input type="text" name="state">
+    	                <label class="span-3 clear">State:</label>
+    	                <input type="text" name="state" class="span-6" >
 	                
-	                <label>Country</label>
-	                <input type="text" name="country">
+    	                <label class="span-3 clear">Country</label>
+    	                <input type="text" name="country" class="span-6" >
+    	            </fieldset>
 	                
-	                <h4>Your Information</h4>
+	                <fieldset class="span-18 last">
+	                    <legend>Your Information</legend>
 	                
-	                <label>E-Mail Address:</label>
-	                <input type="text" name="reporter_email"/>
+    	                <label class="span-3">E-Mail Address:</label>
+    	                <input type="text" name="reporter_email" class="span-6" />
 	                
-	                <label>Full Name:</label>
-	                <input type="text" name="reporter_name">
+    	                <label class="span-3 clear">Full Name:</label>
+    	                <input type="text" name="reporter_name" class="span-6" />
 	                
-	                <label>Phone:</label>
-	                <input type="text" name="reporter_contact">
+    	                <label class="span-3 clear">Phone:</label>
+    	                <input type="text" name="reporter_contact" class="span-6" />
+    	            </fieldset>
 	                
-	                <input type="checkbox" id="remember_contact_information" />
-	                <label for="remember_contact_information">Remember my contact information.</label>
+	                <div class="section clearfix">
+    	                <div class="span-15 push-3 clear last">
+        	                <input type="checkbox" id="remember_contact_information" />
+        	                <label for="remember_contact_information">Remember my contact information.</label>
+        	            </div>
 	                
-	                <input type="checkbox" id="i_vounteer" />
-	                <label for"i_vounteer">I volunteer to help children living around my location get back to their homes.</label>
-	                
-	                <input type="submit" value="Submit" />
+    	                <div class="span-15 push-3 clear last">
+        	                <input type="checkbox" id="i_vounteer" />
+        	                <label for"i_vounteer">I volunteer to help children living around my location get back to their homes.</label>
+        	            </div>
+        	        </div>
+
+	                <div class="section clearfix">
+	                    <input type="submit" value="Submit" class="push-3" />
+	                </div>
                 </form>
             </div>
         </div>
