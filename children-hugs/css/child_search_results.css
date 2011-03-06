@@ -1,0 +1,10 @@
+#children_results_grid .summary { font-size: 14px; }
+#children_results_grid .summary span {
+  font-weight: bold;
+  color: #205791;
+  background-color: #d5edf8;
+  padding: 2px 5px;
+  font-size: 1.5em;
+  margin-right: 2px;
+}
+#children_results_grid table { margin-top: 20px; }

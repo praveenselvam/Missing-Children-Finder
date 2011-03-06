@@ -36,11 +36,11 @@
 	                <fieldset class="span-18 last">
 	                    <legend>Basic Information</legend>
 	                
-    	                <label class="span-3">Name:</label>
+    	                <label class="span-3 name">Name:</label>
     	                <input type="text" class="title span-14" />
 	                
     	                <label class="span-3">Gender:</label>
-    	                <div class="span-6 last">
+    	                <div class="span-6 last float_all_left clearfix gender">
     	                    <input type="radio" name="gender" id="radio_gender_male_report"/>
         	                <label for="radio_gender_male_report">Male</label>
         	                <input type="radio" name="gender" id="radio_gender_female_report"/>
@@ -72,7 +72,7 @@
     	                <label class="span-3 clear">State:</label>
     	                <input type="text" name="state" class="span-6" >
 	                
-    	                <label class="span-3 clear">Country</label>
+    	                <label class="span-3 clear">Country:</label>
     	                <input type="text" name="country" class="span-6" >
     	            </fieldset>
 	                

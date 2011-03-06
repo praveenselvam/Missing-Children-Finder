@@ -1,2 +1,6 @@
 #report_missing_child_form .section { margin: 1em 0 2em; }
 #report_missing_child_form .fieldset { margin: 1em 0 2em; }
+#report_missing_child_form .name { margin-top: 17px; }
+#report_missing_child_form .gender { margin-bottom: 7px; }
+#report_missing_child_form .gender input { margin-top: 7px; }
+#report_missing_child_form .gender label { margin-right: 10px; }

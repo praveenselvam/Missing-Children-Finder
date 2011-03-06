@@ -22,13 +22,14 @@
             
             <?php include 'shared/left_pane.php'; ?>
             
-            <div class="span-18 last">
+            <div class="span-18 last" id="children_results_grid">
                 <h2>Search Results</h2>
-                <div class="span-9">
-                    238 children found
+                <div class="span-14 summary">
+                    <span>238 children</span>
+                    found for "<strong>Kannan, M, 28 years, Trichy</strong>".
                 </div>
-                <div class="span-9 last">
-                    <a href="../../missing/php/search_results_map.php">Map View</a>
+                <div class="span-4 last">
+                    <a href="./search_results_map.php">Map View</a>
                     &nbsp;|&nbsp;
                     Grid View
                 </div>
@@ -46,7 +47,7 @@
                             for($i = 1; $i <= 20; $i++) {
                         ?>
                                 <tr>
-                                    <td><a href="/missing/php/child_profile.php">Kannan</a></td>
+                                    <td><a href="./child_profile.php">Kannan</a></td>
                                     <td>13 years</td>
                                     <td>Male</td>
                                     <td>Trichy, Tamil Nadu, India (within 5 kms)</td>

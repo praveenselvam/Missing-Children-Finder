@@ -22,3 +22,4 @@
 <link rel="stylesheet" href="./css/main.css" type="text/css" media="screen, print">
 <link rel="stylesheet" href="./css/search_child_widget.css" type="text/css" media="screen, print">
 <link rel="stylesheet" href="./css/report_child.css" type="text/css" media="screen, print">
+<link rel="stylesheet" href="./css/child_search_results.css" type="text/css" media="screen, print">
