@@ -30,7 +30,6 @@ INSERT INTO status_catalog(status_name) values
 ## Catalog Data
 
 CREATE TABLE child ( 
- fk_status_id TINYINT NOT NULL,
  name TINYTEXT NOT NULL,
  gender CHAR(1) NOT NULL,
  dob DATE,
