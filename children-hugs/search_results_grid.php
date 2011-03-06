@@ -22,7 +22,7 @@
             
             <?php include 'shared/left_pane.php'; ?>
             
-            <div class="span-18 last" id="children_results_grid">
+            <div class="span-18 middle_container last" id="children_results_grid">
                 <h2>Search Results</h2>
                 <div class="span-14 summary">
                     <span>238 children</span>

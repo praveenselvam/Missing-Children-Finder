@@ -5,18 +5,29 @@ body{
     
     .container{
         padding: 10px;
-        background-color: white;
+        background: url("../images/header.jpg") no-repeat scroll 0 0 white;
         border-left: 1px solid #ccc;
         border-right: 1px solid #ccc;
         .box_shadow();
     }
+    
+    .header{
+        padding: 60px 0 20px;
+    }
+    
+    .middle_container{
+        background-color: white;
+    }
 }
 
 h1{
-    color: @primary-color;
-    margin-bottom: 30px;
     font-family: @special-font-light;
     font-weight: normal;
+    
+    a,
+    a:hover{
+        text-decoration: none;
+    }
 }
 
 h2{

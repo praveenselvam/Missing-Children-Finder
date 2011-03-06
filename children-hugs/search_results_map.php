@@ -22,7 +22,7 @@
             
             <?php include 'shared/left_pane.php'; ?>
             
-            <div class="span-18 last">
+            <div class="span-18 last middle_container">
                 <h2>Search Results</h2>
                 <div class="span-9">
                     238 children found

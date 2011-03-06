@@ -18,7 +18,7 @@
             
             <?php include 'shared/left_pane.php'; ?>
             
-            <div class="span-18 last clearfix form" id="report_missing_child_form">
+            <div class="span-18 middle_container last clearfix form" id="report_missing_child_form">
                 <form action="controller/report_missing.php" method="post">
 	                <h2>Report a Missing Child</h2>
 	                

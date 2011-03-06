@@ -1,4 +1,5 @@
-<a href=".">
-    <h1>Missing Children Finder
+<div class="header">
+    <h1>
+        <a href=".">Missing Children Finder</a>
     </h1>
-</a>
+</div>

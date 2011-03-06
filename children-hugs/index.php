@@ -22,7 +22,7 @@
             
             <?php include 'shared/left_pane.php'; ?>
             
-            <div class="span-12 border">
+            <div class="span-12 border middle_container">
                 <?php include 'shared/current_location_children.php'; ?>
             </div>
             <div class="span-6 last">

@@ -1,19 +1,21 @@
 body { background-color: WhiteSmoke; }
 body .container {
   padding: 10px;
-  background-color: white;
+  background: url("../images/header.jpg") no-repeat scroll 0 0 white;
   border-left: 1px solid #cccccc;
   border-right: 1px solid #cccccc;
   -moz-box-shadow: 0 0 10px #cccccc;
   -webkit-box-shadow: 0 0 10px #cccccc;
   -box-shadow: 0 0 10px #cccccc;
 }
+body .header { padding: 60px 0 20px; }
+body .middle_container { background-color: white; }
 h1 {
-  color: Sienna;
-  margin-bottom: 30px;
   font-family: SansationLight;
   font-weight: normal;
 }
+h1 a { text-decoration: none; }
+h1 a:hover { text-decoration: none; }
 h2 {
   color: #205791;
   border-top: 3px solid #205791;
