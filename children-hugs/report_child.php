@@ -21,7 +21,7 @@
                 <hr/>
                 <?php include 'shared/report_missing_child.php'; ?>
             </div>
-            <div class="span-18 last clearfix" id="report_missing_child_form">
+            <div class="span-18 last clearfix form" id="report_missing_child_form">
                 <form action="controller/report_missing.php" method="post">
 	                <h2>Report a Missing Child</h2>
 	                
@@ -105,7 +105,7 @@
         	        </div>
 
 	                <div class="section clearfix">
-	                    <input type="submit" value="Submit" class="push-3" />
+	                    <input type="submit" value="Submit" class="push-3 span-2" />
 	                </div>
                 </form>
             </div>

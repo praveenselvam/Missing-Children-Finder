@@ -1,37 +1,31 @@
-<form action="../../missing/php/search_results_grid.php">
-    <h3>Search for a Child</h3>
-    <dl>
-        <dt>Name:</dt>
-        <dd><input type="text" /></dd>
-    
-        <dt>Age:</dt>
-        <dd>Between ___ and ___ years</dd>
-    
-        <dt>Gender</dt>
-        <dd>
-            <input type="radio" name="gender" id="radio_gender_male"/>
-            <label for="radio_gender_male">Male</label>
-            <input type="radio" name="gender" id="radio_gender_female"/>
-            <label for="radio_gender_female">Female</label>
-        </dd>
-    
-        <dt>Home Town:</dt>
-        <dd><input type="text" /></dd>
-    
-        <dt>Missing since:</dt>
-        <dd>
-            <select>
-                <option>1 month</option>
-                <option>3 months</option>
-                <option>1 year</option>
-                <option>More than a year</option>
-            </select>
-        </dd>
-    
-        <dt>Photo:</dt>
-        <dd><a href="javascript: void(0);">Select file...</a></dd>
-    
-        <dt><a href="javascript: void(0);">More Options</a></dt>
-        <dd><input type="submit" value="Search" /></dd>
-    </dl>
-</form>
+<div id="search_child_widget">
+    <form action="../../missing/php/search_results_grid.php">
+        <h3>Search for a Child</h3>
+        <label class="span-2">Name:</label>
+        <input type="text" class="span-4 last" />
+        
+        <label class="span-2">Age:</label>
+        <div class="span-4 last age">
+            Between
+            <input type="text" />
+            and
+            <input type="text" />
+        </div>
+        
+        <label class="span-2">Origin:</label>
+        <input type="text" class="span-4 last" />
+        
+        <label class="span-2">Duration:</label>
+        <select class="span-4 last">
+            <option>1 month</option>
+            <option>3 months</option>
+            <option>1 year</option>
+            <option>More than a year</option>
+        </select>
+        
+        <label class="span-2">Photo:</label>
+        <a href="javascript: void(0);" class="span-4 last">Select file...</a>
+        
+        <input type="submit" value="Search" class="span-2 last push-2" />
+    </form>
+</div>
