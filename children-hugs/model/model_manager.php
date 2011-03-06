@@ -3,13 +3,18 @@
 	require_once '../model/db.php';		
 	class ModelManager {
 
+		
 		public  static function writeRecord($sql,$params) {
+			self::transcationWriteRecord($sql, $params,DataBase::getInstance());
+		}
+		
+		public  static function transcationWriteRecord($sql,$params,$PDO) {
 			if ( 
 				($sql != null && (gettype($sql) == "string") ) && 
 				($params !=null && (gettype($params) == "array" ))
 			   )
 			{
-				$stmt = DataBase::getInstance()->prepare($sql);
+				$stmt = $PDO->prepare($sql);
 				
 				foreach($params as $key=>$value)
 				 {
@@ -44,12 +49,16 @@
 		}
 		
 		public static function readRecord($sql,$params) {
+			self::transcationReadRecord($sql,$params,DataBase::getInstance());
+		}
+		
+		public static function transcationReadRecord($sql,$params,$PDO) {
 			if ( 
 				($sql != null && (gettype($sql) == "string") ) && 
 				($params !=null && (gettype($params) == "array" ))
 			   )
 			{
-				 $stmt = DataBase::getInstance()->prepare($sql);
+				 $stmt = $PDO->prepare($sql);
 				 				 
 				 $result = $stmt->execute($params);
 				 $result_array = null;

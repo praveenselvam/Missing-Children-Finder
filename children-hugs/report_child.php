@@ -25,10 +25,10 @@
 	                <div class="section clearfix intent">
                         <h4 class="span-3 text_right">I have...</h4>
                         <div class="span-15 last">
-                            <input type="radio" id="radio_lost_child" name="what_event" />
+                            <input type="radio" id="radio_lost_child" name="child_status" value="LOST"/>
                             <label for="radio_lost_child">lost a child.</label>
                             <br/>
-                            <input type="radio" id="radio_orphaned_child" name="what_event" />
+                            <input type="radio" id="radio_orphaned_child" name="child_status" value="ORPHAN" />
                             <label for="radio_orphaned_child">found an orphaned child.</label>
                         </div>
                     </div>
@@ -42,13 +42,13 @@
     	                <label class="span-3">Gender:</label>
     	                <div class="span-15 last">
         	                <div class="span-6 last float_all_left clearfix gender">
-        	                    <input type="radio" name="gender" id="radio_gender_male_report"/>
+        	                    <input type="radio" name="gender" id="radio_gender_male_report" value="M"/>
             	                <label for="radio_gender_male_report">Male</label>
-            	                <input type="radio" name="gender" id="radio_gender_female_report"/>
+            	                <input type="radio" name="gender" id="radio_gender_female_report" value="F"/>
             	                <label for="radio_gender_female_report">Female</label>
             	            </div>
             	        </div>
-	                
+            	        
     	                <label class="span-3 clear">Date of Birth:</label>
     	                <div class="span-15 last">
     	                    <input type="text" name="dob" class="span-6" />
@@ -111,12 +111,12 @@
     	                </div>
     	                
     	                <div class="span-15 push-3 clear last no_bottom_space">
-        	                <input type="checkbox" id="remember_contact_information" />
+        	                <input type="checkbox" id="remember_contact_information" name="keep_my_contact"/>
         	                <label for="remember_contact_information">Remember my contact information.</label>
         	            </div>
 	                
     	                <div class="span-15 push-3 clear last no_bottom_space">
-        	                <input type="checkbox" id="i_vounteer" />
+        	                <input type="checkbox" id="i_vounteer" name="i_vounteer"/>
         	                <label for"i_vounteer">I volunteer to help children living around my location get back to their homes.</label>
         	            </div>
     	            </fieldset>
