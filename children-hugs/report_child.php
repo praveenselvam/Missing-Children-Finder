@@ -22,8 +22,8 @@
                 <form action="controller/report_missing.php" method="post">
 	                <h2>Report a Missing Child</h2>
 	                
-	                <div class="section clearfix">
-                        <h4 class="span-3">I have...</h4>
+	                <div class="section clearfix intent">
+                        <h4 class="span-3 text_right">I have...</h4>
                         <div class="span-15 last">
                             <input type="radio" id="radio_lost_child" name="what_event" />
                             <label for="radio_lost_child">lost a child.</label>
