@@ -32,9 +32,9 @@
 		
 		public function run() {
 			 $test_complete_status = TRUE;
-			 $test_complete_status = $test_complete_status & self::test_get_instance();
+			 $test_complete_status = $test_complete_status & $this->test_get_instance();
 			 
-			 $test_complete_status = $test_complete_status & self::test_var_instance();
+			 $test_complete_status = $test_complete_status & $this->test_var_instance();
 			 
 			 echo "Test : ".($test_complete_status?"PASS":"FAIL")."\n";
 		}
