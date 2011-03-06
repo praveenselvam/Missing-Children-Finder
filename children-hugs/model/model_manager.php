@@ -50,26 +50,7 @@
 			   )
 			{
 				 $stmt = DataBase::getInstance()->prepare($sql);
-				 /*foreach($params as $key=>$value)
-				 {
-				 	switch (gettype($value)){
-				 		case "integer":
-				 			$stmt->bindParam(':'.$key, $value, PDO::PARAM_INT);
-				 			break;
-				 		case "double":
-				 			$stmt->bindParam(':'.$key, $value, PDO::PARAM_INT);
-				 			break;
-				 		case "string":
-				 			$stmt->bindParam(':'.$key, $value, PDO::PARAM_STR);
-				 			break;
-				 		case "boolean":
-				 			$stmt->bindParam(':'.$key, $value, PDO::PARAM_BOOL);
-				 			break;
-				 		case "NULL":
-				 			$stmt->bindParam(':'.$key, $value, PDO::PARAM_NULL);
-				 			break;
-				 	}	
-				 }*/
+				 				 
 				 $result = $stmt->execute($params);
 				 $result_array = null;
 				 if($result >=1)

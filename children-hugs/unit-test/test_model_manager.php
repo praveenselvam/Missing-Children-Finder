@@ -21,6 +21,8 @@
 			 echo "Test : ".($test_complete_status?"PASS":"FAIL")."\n";
 		}
 		
+		
+		
 		public function test_write_record($sql,$param) {
 				$result = ModelManager::writeRecord($sql, $param);
 				echo $result;

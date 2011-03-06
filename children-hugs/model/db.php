@@ -35,7 +35,5 @@
 			}
 			return self::$instance;
 		}
-		
-		
 	}
 ?>

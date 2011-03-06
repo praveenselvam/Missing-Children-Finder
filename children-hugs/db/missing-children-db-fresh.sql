@@ -8,12 +8,12 @@
 drop database if exists mc_db;
 create database if not exists mc_db;
 
-DROP user 'mc_db_user'@'%';
+DROP user 'mc_db_user'@"%";
 FLUSH PRIVILEGES;
 
-create user 'mc_db_user'@'%' identified by 'mc_db_user_admin@123#';
+create user 'mc_db_user'@"%" identified by 'mc_db_user_admin@123#';
 
-grant ALL ON mc_db.* to 'mc_db_user'@'%' identified by 'mc_db_user_admin@123#';
+grant ALL ON mc_db.* to 'mc_db_user'@"%" identified by 'mc_db_user_admin@123#';
 
 # User and DB Created.
 
