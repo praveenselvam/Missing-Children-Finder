@@ -1,6 +1,5 @@
 <?php
-	
-	require_once '../model/db.php';		
+	require_once 'db.php';		
 	class ModelManager {
 
 		
@@ -59,7 +58,6 @@
 			   )
 			{
 				 $stmt = $PDO->prepare($sql);
-				 
 				 $result = $stmt->execute($params);
 				 $result_array = null;
 				 if($result >= 1)

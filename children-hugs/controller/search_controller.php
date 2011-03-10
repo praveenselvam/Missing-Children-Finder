@@ -17,21 +17,32 @@
 									(ControllerParameterMap::$SEARCH_CHILD_MAP,$param_map);
 	
 				$result=$search_model->basicSearch($final_param_map);
-				echo "count: ".count($result).PHP_EOL;
 			}
 			return $result;
 		}
 		
 	}
-	
-	$post_params=$_POST;
-	// none of the search params are not exact matches except for gender
-	$post_params['name']="%".$_POST['name']."%";
-	$post_params['origin']="%".$_POST['origin']."%";
+	// Request processing falls here...!
+	// Identify the type of request
+	// Handle only GET requests
+	if($_SERVER['REQUEST_METHOD']!='GET'){
+		header("HTTP",false,405);
+		$_REQUEST['error']=1;
+		$_REQUEST['response']='Invalid HTTP method used. Only GET supported.';
+		return;
+	}
+
+	$post_params=array();
+	$post_params=$_GET;
+	// none of the search params are exact matches except for gender
+	$_GET['gender']=($_GET['male']=="on"?"M":($_GET['female']=="on"?"F":""));
+	$post_params['gender']=$_GET['gender'];
+	$post_params['name']="%".$_GET['name']."%";
+	$post_params['origin']="%".$_GET['origin']."%";
 	// finding child nearly of the same age
-	$post_params['age_range_start']=(int)$_POST['age']-2;
-	$post_params['age_range_end']=(int)$_POST['age']+2;
-	
+	$post_params['age_range_start']=(int)$_GET['age']-2;
+	$post_params['age_range_end']=(int)$_GET['age']+2;	
 	$search_controller=new SearchController();
+	$_REQUEST['error']=0;
 	$_REQUEST['response']=$search_controller->action_performbasicsearch($post_params);
 ?>

@@ -9,7 +9,7 @@ Class ModelSearch{
 	
 	public function basicSearch($params){
 		$DB=DataBase::getInstance();
-		try {							   	
+		try {
 			$search_result=ModelManager::transcationReadRecord(self::$SEARCH_CHILD_BASIC, $params, $DB);
 		}catch(PDOException $pdo_e) {
 			//$DB->rollback();
