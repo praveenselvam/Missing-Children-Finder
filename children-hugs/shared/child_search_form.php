@@ -8,9 +8,9 @@
         
         <label class="span-2 clear">Gender:</label>
         <div class="span-3 last">
-            <input type="radio" name="male"/>
+            <input type="radio" name="gender" value="M"/>
             <label>M</label>
-            <input type="radio" name="female"/>
+            <input type="radio" name="gender" value="F"/>
             <label>F</label>
         </div>
         

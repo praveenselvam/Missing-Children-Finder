@@ -35,13 +35,18 @@
 	$post_params=array();
 	$post_params=$_GET;
 	// none of the search params are exact matches except for gender
-	$_GET['gender']=($_GET['male']=="on"?"M":($_GET['female']=="on"?"F":""));
-	$post_params['gender']=$_GET['gender'];
-	$post_params['name']="%".$_GET['name']."%";
-	$post_params['origin']="%".$_GET['origin']."%";
+	$post_params['gender']=trim($_GET['gender']);
+	if($_GET['name']!=NULL && trim($_GET['name'])!="")
+		$post_params['name']="%".trim($_GET['name'])."%";
+	if($_GET['origin']!=NULL && trim($_GET['origin'])!="")
+		$post_params['origin']="%".trim($_GET['origin'])."%";
 	// finding child nearly of the same age
-	$post_params['age_range_start']=(int)$_GET['age']-2;
-	$post_params['age_range_end']=(int)$_GET['age']+2;	
+	if($_GET['age'] !=NULL && trim($_GET['age']) != ""){
+		$post_params['age_range_start']=(int)$_GET['age']-2;
+		$post_params['age_range_end']=(int)$_GET['age']+2;
+	}else{
+		echo "did not receive age properly <br/>";
+	}
 	$search_controller=new SearchController();
 	$_REQUEST['error']=0;
 	$_REQUEST['response']=$search_controller->action_performbasicsearch($post_params);

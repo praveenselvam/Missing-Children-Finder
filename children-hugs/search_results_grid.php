@@ -9,7 +9,6 @@
         </title>
         <head>
             <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-            
             <?php include 'shared/includes.php'; ?>
         </head>
     </head>
@@ -35,7 +34,29 @@
                 <h2>Search Results</h2>
                 <div class="span-14 summary">
                     <span><?php echo count($_REQUEST['response']); ?></span>
-                    matches found for "<strong><?php echo $_GET['name'].", ".$_GET['gender'].", ".$_GET['origin']; ?></strong>
+                    matches found for <strong>
+                    <?php
+                    	$header="";
+                    	if($_GET['gender']!=""){
+                    		if($_GET['gender']="M")
+                    			$header="male children ";
+                    		else if($_GET['gender']="F")
+                    			$header="female children ";
+                    		else
+                    			$header="children ";
+                    	}else{
+                    		$header="children ";
+                    	}
+                    	if($_GET['age']!="")
+                    		$header=$header."who are around ".$_GET['age']." years of age, ";
+                    	if($_GET['name']!="") 
+                    		$header=$header."whose names are like ".$_GET['name'].", ";
+                    	if($_GET['origin']!="")
+                    		$header=$header."from the place ".$_GET['origin'].", ";
+                    	$header=trim($header,", ");
+                    	echo $header;
+                    ?></strong>
+                    <br/>
                 </div>
                 <div class="span-4 last">
                     <a href="./search_results_map.php">Map View</a>
@@ -71,7 +92,7 @@
                 </table>
                 <?php 
             		}else{
-            			echo "Internal error occurred while processing your request. Pls try again later <br>";
+            			echo "<div class=\"span-14 summary\"> Internal error occurred while processing your request. Pls try again later! <br/> </div>";
             		}
             	?>
             </div>
