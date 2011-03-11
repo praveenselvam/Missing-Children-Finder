@@ -1,5 +1,6 @@
 <?php
-	$dt = new DateTime();
+	require_once '../model/model_manager.php';	
+	/*$dt = new DateTime();
 
 	if( gettype($dt) == "object" ) {
 		if($dt instanceof DateTime)
@@ -21,7 +22,18 @@
 	}else{
 		echo "Test keep contact failed\n";
 		echo strtoupper($auxInformation["keep_my_contact"]) ." ";
-	}
+	}*/
+
+	$RELATE_CHILD_ADDRESS = 
+					  "INSERT INTO rel_reporter_child_address (rca_child_id,rca_address_id,rca_reporter_id)
+					  VALUES ((SELECT child_id from child where salt =:salt ),
+					  		  (SELECT address_id from address where salt =:salt ),
+					  		  (SELECT reporter_id from reporter where salt = 1 ) 	
+					         )";
+	
+	$params = array("salt" => 199334831);
+
+	$result = ModelManager::writeRecord($RELATE_REPORTER_CHILD_ADDRESS, $params);
 
 	//$strFormat = 'Y-m-d';
     //$strDate = new DateTime( $strFormat ) ;

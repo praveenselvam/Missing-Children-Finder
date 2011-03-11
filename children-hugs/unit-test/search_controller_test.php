@@ -1,5 +1,5 @@
 <?php
-	require_once "../controller/search_controller.php";
+	require_once "controller/search_controller.php";
 	class SearchControllerTest{
 		public function test_basicsearch(){
 			$param = array (

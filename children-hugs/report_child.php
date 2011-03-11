@@ -1,3 +1,5 @@
+<?php include 'controller/report_missing.php'; ?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
@@ -19,7 +21,8 @@
             <?php include 'shared/left_pane.php'; ?>
             
             <div class="span-18 middle_container last clearfix form" id="report_missing_child_form">
-                <form action="controller/report_missing.php" method="post">
+                <form action="report_child.php" method="post">
+                	<input type="hidden" name="form_action" value="REPORT_MISSING"/>
 	                <h2>Report a Missing Child</h2>
 	                
 	                <div class="section clearfix intent">
@@ -37,7 +40,7 @@
 	                    <legend>Basic Information</legend>
 	                
     	                <label class="span-3 name">Name:</label>
-    	                <input type="text" class="title span-14" />
+    	                <input type="text" class="title span-14" name="child_name" />
 	                
     	                <label class="span-3">Gender:</label>
     	                <div class="span-15 last">

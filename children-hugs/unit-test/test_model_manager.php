@@ -16,7 +16,7 @@
 			 					   "photo_url" => "http://www.abc.com/",
 			 						"salt" => (mt_rand(0, mt_getrandmax()))
 			 					   );
-			 $test_complete_status = $test_complete_status & $this->test_write_record($write_sql,$write_params);
+			 //$test_complete_status = $test_complete_status & $this->test_write_record($write_sql,$write_params);
 			 echo "Test : ".($test_complete_status?"PASS":"FAIL")."\n";
 		}
 		
@@ -35,7 +35,12 @@
 				$param = array("status_id"=>1);
 			}
 			
+			echo $sql;
+			
 			$result = ModelManager::readRecord($sql, $param);
+			
+			echo gettype($result);
+			
 			if(gettype($result) == 'array' && $result != null)
 			{  
 				foreach($result as $row)

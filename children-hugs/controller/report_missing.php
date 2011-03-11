@@ -1,6 +1,6 @@
 <?php
-	require_once 'parameter_map.php';
-	require_once '../model/model_report_missing.php';
+	require_once "controller/parameter_map.php";
+	require_once "model/model_report_missing.php";
 	
 	class ControllerReportMissing {
 										  
@@ -17,7 +17,8 @@
 			  $action_result = $report_missing_model->reportMissingChild($childInformation,
 															  $reporterInformation,
 															  $addressInformation,
-															  $preferenceInformation);	
+															  $preferenceInformation);
+			  $_REQUEST["server_response"] = "SUCCESS";															  	
 		}
 		
 		private function extractChildInformation($post_array)
@@ -46,12 +47,15 @@
 	foreach($_GET as $key => $value)
 	{
 		//echo "Key ".$key." = ".$value;
-	}
+	}	
 	
-	foreach($_POST as $key => $value)
+	if ( $_POST["form_action"] != null && "REPORT_MISSING" == strtoupper($_POST["form_action"]))
 	{
-		echo "\"".$key."\" => \"".$value."\",";
+		/*foreach ($_POST as $k=>$v){
+			echo $k."=".$v."</br>";
+		}*/
+		
+		$controller = new ControllerReportMissing();
+		$controller->post($_POST);
 	}
-	// post the data to controller
-	// post($_POST);
 ?>

@@ -80,4 +80,10 @@ CREATE TABLE rel_reporter_child_address (
 	rca_reporter_id INT NOT NULL
 )ENGINE=InnoDB;
 
+CREATE TABLE rel_child_status (
+	rcs_id  INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	rcs_child_id INT NOT NULL,
+	rcs_status_id INT NOT NULL
+)ENGINE=InnoDB;
+
 ##
