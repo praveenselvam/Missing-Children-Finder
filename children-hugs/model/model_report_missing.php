@@ -23,6 +23,15 @@
 					  		  (SELECT address_id from address where salt =:salt ),
 					  		  (SELECT reporter_id from reporter where salt =:salt ) 	
 					         )";
+		
+		public static $RELATE_EXISTING_REPORTER_CHILD_ADDRESS = 
+					  "INSERT INTO rel_reporter_child_address (rca_child_id,rca_address_id,rca_reporter_id)
+					  VALUES ((SELECT child_id from child where salt =:salt ),
+					  		  (SELECT address_id from address where salt =:salt ),
+					  		  (SELECT reporter_id from reporter where email =:email ) 	
+					         )";
+		
+		
 		public static $RELATE_CHILD_ADDRESS = 
 					  "INSERT INTO rel_reporter_child_address (rca_child_id,rca_address_id,rca_reporter_id)
 					  VALUES ((SELECT child_id from child where salt =:salt ),
@@ -54,7 +63,7 @@
 			 */
 			$CALL_STATUS = FALSE;										   	
 
-			$KEEP_REPORTER_CONTACT = FALSE;
+			$KEEP_REPORTER_CONTACT = 0;
 			
 			try {							   	
 				$DB =  DataBase::getInstance();
@@ -64,40 +73,73 @@
 						
 				$TRANSCATION_SALT = mt_rand(0, mt_getrandmax());
 				
+				$_info = null;				
 				$_info = $childInformation;
 				$_info["salt"] = $TRANSCATION_SALT;
 				$insert_child_status = ModelManager::transcationWriteRecord(self::$ADD_CHILD, $_info, $DB);
 				
 				// TODO: externalize this lookup. The map could change and we'd have no clue here.
 				// move this to parameter_map.php preferably.
-				if ( strtoupper($auxInformation["keep_my_contact"])  == "ON" ) {				
+				if ( strtoupper($auxInformation["keep_my_contact"])  == "ON" ) {
+					$_info = null;				
 					$_info = $reporterInformation;
 					$_info["salt"] = $TRANSCATION_SALT;
-					$insert_reporter_status = ModelManager::transcationWriteRecord(self::$ADD_REPORTER, $_info, $DB);
-					$KEEP_REPORTER_CONTACT = TRUE;
+					try {
+						$insert_reporter_status = ModelManager::transcationWriteRecord(self::$ADD_REPORTER, $_info, $DB);
+					}catch(PDOException $pdoException)
+					{
+						if($pdoException->getCode() == "23000")
+						{
+							// constraint violation , looks like email already exists
+							echo "".$pdoException->getMessage();
+							$KEEP_REPORTER_CONTACT = $KEEP_REPORTER_CONTACT + 1;
+							
+						}else{
+							throw $pdoException;
+						}
+					}
+					$KEEP_REPORTER_CONTACT = $KEEP_REPORTER_CONTACT + 1;
 				}
 				
+				$_info = null;
 				$_info = $addressInformation;
 				$_info["salt"] = $TRANSCATION_SALT;
 				$insert_address_status = ModelManager::transcationWriteRecord(self::$ADD_ADDRESS, $_info, $DB);
+					$salt_associate = null;
+					$salt_associate = array("salt" => $TRANSCATION_SALT);
+					if($KEEP_REPORTER_CONTACT == 1)
+					{
+						ModelManager::writeRecord(self::$RELATE_REPORTER_CHILD_ADDRESS, $salt_associate);
+					}else if ($KEEP_REPORTER_CONTACT == 2) {
+						try {
+							$salt_associate = null;
+							$salt_associate =  array("salt" => $TRANSCATION_SALT,"email"=>$reporterInformation["email"]);
+							// $reporterInformation;
+							//$salt_associate["salt"] = $TRANSCATION_SALT;
+						
+							//print_r($salt_associate);
+						
+							ModelManager::writeRecord(self::$RELATE_EXISTING_REPORTER_CHILD_ADDRESS, $salt_associate);
+						}catch(PDOException $pe)
+						{
+							echo "<br/>".$pe->getMessage();
+						}
+					}else{
+						ModelManager::writeRecord(self::$RELATE_CHILD_ADDRESS, $salt_associate);
+					}
 				
-				$salt_associate = array("salt" => $TRANSCATION_SALT);
-				if($KEEP_REPORTER_CONTACT)
-				{
-					ModelManager::writeRecord(self::$RELATE_REPORTER_CHILD_ADDRESS, $salt_associate);
-				}else{
-					ModelManager::writeRecord(self::$RELATE_CHILD_ADDRESS, $salt_associate);
-				}
 				
-				$salt_associate = $auxInformation;
-				$salt_associate["salt"] = $TRANSCATION_SALT;
+				//$salt_associate = $auxInformation;
+				$salt_associate = null;
+				$salt_associate = array("salt" => $TRANSCATION_SALT,"child_status"=>$auxInformation["child_status"]);
+				//print_r($salt_associate);
 				ModelManager::writeRecord(self::$RELATE_CHILD_STATUS, $salt_associate);
 				$CALL_STATUS = TRUE;
 				
 			}catch(PDOException $pdo_e) {
 				//$DB->rollback();
 				// report error here
-				echo "".$pdo_e->getMessage();
+				echo "<br/>".$pdo_e->getMessage();
 			}
 			return $CALL_STATUS;
 		}
