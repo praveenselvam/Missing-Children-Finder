@@ -2,6 +2,7 @@
 	require_once "parameter_map.php";
 	require_once "model/model_search.php";
 	
+	
 	class SearchController{
 		public function __construct(){}
 		
@@ -14,8 +15,8 @@
 				$search_model=new ModelSearch();
 				$final_param_map=array();
 				$final_param_map=ControllerParameterMap::extractionHelper
-									(ControllerParameterMap::$SEARCH_CHILD_MAP,$param_map);
-	
+									(ControllerParameterMap::$SEARCH_CHILD_MAP,$param_map);					
+									
 				$result=$search_model->basicSearch($final_param_map);
 			}
 			return $result;

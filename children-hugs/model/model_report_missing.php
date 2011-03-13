@@ -46,6 +46,23 @@
 							 	   )";
 
 		
+		public function process_photo($photo_id) {
+			
+			$fileperm = 0644;
+			$dirperm = 0777;
+									
+			$target_path = $_SERVER['DOCUMENT_ROOT']."/missing-children/images/uploads/";
+			
+			if(!is_dir($target_path))
+			{
+				mkdir($target_path,$dirperm);
+			}
+			$destination = $target_path.$photo_id."_".basename($_FILES["child_photo"]["tmp_name"]);
+			
+			move_uploaded_file($_FILES["child_photo"]["tmp_name"], $destination);
+			
+		}
+		
 		public function reportMissingChild($childInformation,
 										   $reporterInformation,
 										   $addressInformation,
@@ -73,6 +90,8 @@
 						
 				$TRANSCATION_SALT = mt_rand(0, mt_getrandmax());
 				
+				$this->process_photo($TRANSCATION_SALT);
+				
 				$_info = null;				
 				$_info = $childInformation;
 				$_info["salt"] = $TRANSCATION_SALT;
@@ -91,7 +110,7 @@
 						if($pdoException->getCode() == "23000")
 						{
 							// constraint violation , looks like email already exists
-							echo "".$pdoException->getMessage();
+							//echo "".$pdoException->getMessage();
 							$KEEP_REPORTER_CONTACT = $KEEP_REPORTER_CONTACT + 1;
 							
 						}else{
@@ -122,7 +141,7 @@
 							ModelManager::writeRecord(self::$RELATE_EXISTING_REPORTER_CHILD_ADDRESS, $salt_associate);
 						}catch(PDOException $pe)
 						{
-							echo "<br/>".$pe->getMessage();
+							//echo "<br/>".$pe->getMessage();
 						}
 					}else{
 						ModelManager::writeRecord(self::$RELATE_CHILD_ADDRESS, $salt_associate);
@@ -139,7 +158,7 @@
 			}catch(PDOException $pdo_e) {
 				//$DB->rollback();
 				// report error here
-				echo "<br/>".$pdo_e->getMessage();
+				//echo "<br/>".$pdo_e->getMessage();
 			}
 			return $CALL_STATUS;
 		}

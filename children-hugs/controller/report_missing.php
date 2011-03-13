@@ -2,6 +2,9 @@
 	require_once "controller/parameter_map.php";
 	require_once "model/model_report_missing.php";
 	
+	require_once "model/model_validator.php";
+	require_once "rules/report_missing_child_validation_rules.php";
+	
 	class ControllerReportMissing {
 										  
 		
@@ -14,11 +17,26 @@
 			  $addressInformation = $this->extractAddressInformation($post_array);
 			  $preferenceInformation = $this->extractPreferenceInformation($post_array);
 			
-			  $action_result = $report_missing_model->reportMissingChild($childInformation,
+			  $validation_results = ModelValidator::validate(
+			  							$post_array,
+			  							MissingChildValidationRules::$REPORT_CHILD_MISSING_MAP
+
+			  							
+			  							);
+			  if(count($validation_results) == 0)
+			  {	
+			  	$action_result = $report_missing_model->reportMissingChild($childInformation,
 															  $reporterInformation,
 															  $addressInformation,
 															  $preferenceInformation);
-			  $_REQUEST["server_response"] = "SUCCESS";															  	
+				$_REQUEST["server_response"] = "SUCCESS";
+				 											  
+			  }else{			  	
+			  	$_REQUEST["user_request"] = $post_array;
+			  	$_REQUEST["validation_errors"] = $validation_results;
+			  	 $_REQUEST["server_response"] = "ERROR";			  	
+			  }
+			 															  	
 		}
 		
 		private function extractChildInformation($post_array)
