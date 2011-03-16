@@ -2,6 +2,7 @@
 	require_once "model/db.php";
 	require_once "model/model_manager.php";
 	require_once "util/log4php/Logger.php";
+	require_once "util/util_upload.php";
 	
 	
 	 class ModelReportMissing {
@@ -55,20 +56,8 @@
 		
 		
 		public function process_photo($photo_id) {
-			
-			$fileperm = 0644;
-			$dirperm = 0777;
-									
-			$target_path = $_SERVER['DOCUMENT_ROOT']."/missing-children/images/uploads/";
-			
-			if(!is_dir($target_path))
-			{
-				mkdir($target_path,$dirperm);
-			}
-			$destination = $target_path.$photo_id."_".basename($_FILES["child_photo"]["tmp_name"]);
-			
-			move_uploaded_file($_FILES["child_photo"]["tmp_name"], $destination);
-			
+			$upload_handler = new Upload();			
+			$upload_handler->upload_photo($photo_id);
 		}
 		
 		public function reportMissingChild($childInformation,

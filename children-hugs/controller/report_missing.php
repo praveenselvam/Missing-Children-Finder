@@ -26,6 +26,11 @@
 
 			  							
 			  							);
+			  /**
+			   * TODO : Validate status of uploaded file, 
+			   * we need to turn back here in case the upload failed.
+			   */							
+			  							
 			  if(count($validation_results) == 0)
 			  {	
 			  	$action_result = $report_missing_model->reportMissingChild($childInformation,

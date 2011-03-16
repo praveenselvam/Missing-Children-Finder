@@ -1,13 +1,10 @@
 <?php
 	class Upload {
 		
-			public $fileperm = 0644;
-			public $dirperm = 0777;
-												
-			//public $target_path = $_SERVER['DOCUMENT_ROOT']."/missing-children/images/uploads/";
-			
-			
-			public function create_if_not_exists($target_path,$dirpem)
+			private $fileperm = 0644;
+			private $dirperm = 0777;
+				
+			private function create_if_not_exists($target_path,$dirpem)
 			{
 				if(!is_dir($target_path))
 				{
@@ -15,12 +12,25 @@
 				}	
 			}
 			
-			public function upload_photo($photo_id,$target_path)
+			public function upload_photo($photo_id)
 			{
+				$target_path = $_SERVER['DOCUMENT_ROOT']."/missing-children/images/uploads/";
+				
 				$this->create_if_not_exists($target_path, $this->dirperm);
 				
-				$destination = $target_path.$photo_id."_".basename($_FILES["child_photo"]["tmp_name"]);			
+				$destination = $target_path."full_".$photo_id.strtolower(
+				 	strrchr(basename(($_FILES["child_photo"]["name"])),".")
+				 );
+							
 				move_uploaded_file($_FILES["child_photo"]["tmp_name"], $destination);
-			} 
+				
+				/***
+				 * TODO: Write resizing functions.
+				 * - Allowed file extensions
+				 * - Write validations for file size checks.
+				 * - handle image lib missing.
+				 */
+			}
+			
 	}
 ?>
