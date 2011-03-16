@@ -1,10 +1,13 @@
 <?php
 	require_once "parameter_map.php";
 	require_once "model/model_search.php";
+	require_once "controller/base_controller.php";
 	
 	
-	class SearchController{
-		public function __construct(){}
+	class SearchController extends ControllerBaseAction {
+		public function __construct(){
+			self::configure();
+		}
 		
 		public static function _print($item, $key){
 			echo "$key -- $item".PHP_EOL;

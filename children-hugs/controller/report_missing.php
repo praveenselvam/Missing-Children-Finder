@@ -1,12 +1,15 @@
 <?php
 	require_once "controller/parameter_map.php";
-	require_once "model/model_report_missing.php";
-	
+	require_once "model/model_report_missing.php";	
 	require_once "model/model_validator.php";
 	require_once "rules/report_missing_child_validation_rules.php";
+	require_once "controller/base_controller.php";
 	
-	class ControllerReportMissing {
-										  
+	class ControllerReportMissing  extends ControllerBaseAction  {
+
+		public function __construct() {
+			self::configure();
+		}
 		
 		public function post($post_array)
 		{

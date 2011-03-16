@@ -1,8 +1,10 @@
 <?php
 	require_once "model/db.php";
 	require_once "model/model_manager.php";
+	require_once "util/log4php/Logger.php";
 	
-	class ModelReportMissing {
+	
+	 class ModelReportMissing {
 		
 		public static $ADD_CHILD = "INSERT INTO child(name,gender,dob,age,salt)
 									 VALUES(:name,:gender,:dob,:age,:salt)";
@@ -45,6 +47,12 @@
 							 		(SELECT status_id from status_catalog where status_name =:child_status )
 							 	   )";
 
+ 		private $logger;
+ 		
+ 		public function  __construct() {
+ 			$this->logger = Logger::getLogger(__CLASS__);
+ 		}
+		
 		
 		public function process_photo($photo_id) {
 			
@@ -108,9 +116,7 @@
 					}catch(PDOException $pdoException)
 					{
 						if($pdoException->getCode() == "23000")
-						{
-							// constraint violation , looks like email already exists
-							//echo "".$pdoException->getMessage();
+						{							
 							$KEEP_REPORTER_CONTACT = $KEEP_REPORTER_CONTACT + 1;
 							
 						}else{
@@ -133,32 +139,31 @@
 						try {
 							$salt_associate = null;
 							$salt_associate =  array("salt" => $TRANSCATION_SALT,"email"=>$reporterInformation["email"]);
-							// $reporterInformation;
-							//$salt_associate["salt"] = $TRANSCATION_SALT;
-						
-							//print_r($salt_associate);
-						
+							
 							ModelManager::writeRecord(self::$RELATE_EXISTING_REPORTER_CHILD_ADDRESS, $salt_associate);
 						}catch(PDOException $pe)
 						{
-							//echo "<br/>".$pe->getMessage();
+							
 						}
 					}else{
 						ModelManager::writeRecord(self::$RELATE_CHILD_ADDRESS, $salt_associate);
 					}
 				
 				
-				//$salt_associate = $auxInformation;
+				
 				$salt_associate = null;
 				$salt_associate = array("salt" => $TRANSCATION_SALT,"child_status"=>$auxInformation["child_status"]);
-				//print_r($salt_associate);
+				
 				ModelManager::writeRecord(self::$RELATE_CHILD_STATUS, $salt_associate);
 				$CALL_STATUS = TRUE;
 				
+				$this->logger->info("Done reporting child...");
+				
 			}catch(PDOException $pdo_e) {
-				//$DB->rollback();
-				// report error here
-				//echo "<br/>".$pdo_e->getMessage();
+				$this->logger->error("Error reporting child : ".$pdo_e->getMessage());
+			}catch(Exception $e)
+			{
+				$this->logger->error("Error reporting child : ".$e->getMessage());
 			}
 			return $CALL_STATUS;
 		}
