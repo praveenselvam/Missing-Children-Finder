@@ -24,7 +24,7 @@
 						  ),
 			"age" => array( 
 							array (
-								"regex" => "/^[0-9]{2}$/",
+								"regex" => "/^[0-9]+$/",
 								"match" => "",
 								"no_match" => "Please specify your age"
 							)

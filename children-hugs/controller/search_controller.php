@@ -1,28 +1,62 @@
 <?php
 	require_once "parameter_map.php";
 	require_once "model/model_search.php";
+	require_once "model/model_validator.php";
+	require_once "rules/search_child_validation_rules.php";
 	require_once "controller/base_controller.php";
 	
 	
-	class SearchController extends ControllerBaseAction {
-		public function __construct(){
+	class SearchController extends ControllerBaseAction 
+	{
+		public function __construct()
+		{
 			self::configure();
 		}
 		
-		public static function _print($item, $key){
+		public static function _print($item, $key)
+		{
 			echo "$key -- $item".PHP_EOL;
 		}
 		
-		public function action_performbasicsearch($param_map){
-			if(NULL != $param_map && 0 != count($param_map)){
-				$search_model=new ModelSearch();
-				$final_param_map=array();
-				$final_param_map=ControllerParameterMap::extractionHelper
-									(ControllerParameterMap::$SEARCH_CHILD_MAP,$param_map);					
-									
-				$result=$search_model->basicSearch($final_param_map);
+		public function action_performbasicsearch($param_map)
+		{			
+			
+			if(NULL != $param_map && 0 != count($param_map))
+			{
+
+				 foreach ($param_map as $k=>$v)
+				 {
+				 	if($v!=null && !empty($v))
+				 	{
+				 		$validation_map[$k] = $v;
+				 	}
+				 }
+				
+				 $validation_results = ModelValidator::validate(
+			  							$validation_map,
+			  							SearchChildValidationRules::$SEARCH_CHILD_MISSING_MAP			  							
+			  							);
+				 if(count($validation_results) == 0)
+			  	{		
+					$search_model=new ModelSearch();
+					$final_param_map=array();
+					$final_param_map=ControllerParameterMap::extractionHelper
+										(ControllerParameterMap::$SEARCH_CHILD_MAP,$param_map);					
+					try {
+						$result=$search_model->basicSearch($final_param_map);
+						$_REQUEST['response']= $result;	
+					}catch(Exception $e)
+					{
+						Logger::getLogger(__CLASS__)->error($e);
+					}
+			  	}else{
+			  		$_REQUEST["user_request"] = $param_map;
+			  		$_REQUEST["validation_errors"] = $validation_results;
+			  		$_REQUEST["server_response"] = "ERROR";
+			  	}					
+				
 			}
-			return $result;
+			
 		}
 		
 	}
@@ -48,10 +82,11 @@
 	if($_GET['age'] !=NULL && trim($_GET['age']) != ""){
 		$post_params['age_range_start']=(int)$_GET['age']-2;
 		$post_params['age_range_end']=(int)$_GET['age']+2;
-	}else{
-		echo "did not receive age properly <br/>";
+	}else
+	{
+		 Logger::getLogger(__CLASS__)->error("Did not receive age.");
 	}
 	$search_controller=new SearchController();
 	$_REQUEST['error']=0;
-	$_REQUEST['response']=$search_controller->action_performbasicsearch($post_params);
+	$search_controller->action_performbasicsearch($post_params);
 ?>

@@ -1,5 +1,6 @@
 <?php
 	require_once "model/db.php";
+	require_once "util/log4php/Logger.php";
 	
 	class ModelManager {
 
@@ -52,46 +53,46 @@
 			return self::transcationReadRecord($sql,$params,DataBase::getInstance());
 		}
 		
-		public static function transcationReadRecord($sql,$params,$PDO) {
-			
-			
-			if ( 
-				($sql != null && (gettype($sql) == "string") ) && 
-				($params !=null && (gettype($params) == "array" ))
-			   )
-			{
-				 $stmt = $PDO->prepare($sql);
-				 $result = $stmt->execute($params);
-
-				 //echo "Result: " .$result;	
-				 
-				 $result_array = null;
-				 if($result >= 1)
-				 {
-				 	$result_array = $stmt->fetchAll(PDO::FETCH_ASSOC);			 	 
-				 	
-				 	//echo "In fetch all \n".gettype($result_array)."\n";
-				 }				 
-				 $stmt = null;
-				 				 
-				 return $result_array;
-				   
-			}else if($sql != null && gettype($sql) == "string"){
-				 $stmt = $PDO->prepare($sql);
-				 				 
-				 $result = $stmt->execute();
-				 $result_array = null;
-				 if($result >= 1)
-				 {
-				 	$result_array = $stmt->fetchAll(PDO::FETCH_ASSOC);
-				 }				 
-				 $stmt = null;
-				 return $result_array;
-			}else{
-				//echo "SQL test = ".($sql != null && (gettype($sql) == "string") );
-				//echo "\n Pram test  =".((gettype($params)))."\n" ;
-				
-			}			
+		public static function transcationReadRecord($sql,$params,$PDO) 
+		{			
+				if ( 
+					($sql != null && (gettype($sql) == "string") ) && 
+					($params !=null && (gettype($params) == "array" ))
+				   )
+				{
+					 $stmt = $PDO->prepare($sql);
+					 $result = $stmt->execute($params);
+	
+					 //echo "Result: " .$result;	
+					 
+					 $result_array = null;
+					 if($result >= 1)
+					 {
+					 	$result_array = $stmt->fetchAll(PDO::FETCH_ASSOC);			 	 
+					 	
+					 	//echo "In fetch all \n".gettype($result_array)."\n";
+					 }				 
+					 $stmt = null;
+					 				 
+					 return $result_array;
+					   
+				}else if($sql != null && gettype($sql) == "string"){
+					 $stmt = $PDO->prepare($sql);
+					 				 
+					 $result = $stmt->execute();
+					 $result_array = null;
+					 if($result >= 1)
+					 {
+					 	$result_array = $stmt->fetchAll(PDO::FETCH_ASSOC);
+					 }				 
+					 $stmt = null;
+					 return $result_array;
+				}else{
+					//echo "SQL test = ".($sql != null && (gettype($sql) == "string") );
+					//echo "\n Pram test  =".((gettype($params)))."\n" ;
+					
+				}
+					
 			return null;
 		}		
 	}

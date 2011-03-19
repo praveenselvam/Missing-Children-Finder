@@ -22,9 +22,7 @@
 			
 			  $validation_results = ModelValidator::validate(
 			  							$post_array,
-			  							MissingChildValidationRules::$REPORT_CHILD_MISSING_MAP
-
-			  							
+			  							MissingChildValidationRules::$REPORT_CHILD_MISSING_MAP			  							
 			  							);
 			  /**
 			   * TODO : Validate status of uploaded file, 
@@ -42,7 +40,7 @@
 			  }else{			  	
 			  	$_REQUEST["user_request"] = $post_array;
 			  	$_REQUEST["validation_errors"] = $validation_results;
-			  	 $_REQUEST["server_response"] = "ERROR";			  	
+			  	$_REQUEST["server_response"] = "ERROR";			  	
 			  }
 			 															  	
 		}

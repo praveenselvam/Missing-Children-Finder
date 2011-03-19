@@ -97,5 +97,6 @@
             	?>
             </div>
         </div>
+         <?php include 'shared/errors_to_browser.php'; ?>
     </body>
 </html>
