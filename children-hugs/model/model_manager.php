@@ -63,15 +63,14 @@
 					 $stmt = $PDO->prepare($sql);
 					 $result = $stmt->execute($params);
 	
-					 //echo "Result: " .$result;	
+					 //echo "Result: ".$result;	
 					 
 					 $result_array = null;
+					 
 					 if($result >= 1)
 					 {
-					 	$result_array = $stmt->fetchAll(PDO::FETCH_ASSOC);			 	 
-					 	
-					 	//echo "In fetch all \n".gettype($result_array)."\n";
-					 }				 
+					 	$result_array = $stmt->fetchAll(PDO::FETCH_ASSOC);
+					 }			 
 					 $stmt = null;
 					 				 
 					 return $result_array;

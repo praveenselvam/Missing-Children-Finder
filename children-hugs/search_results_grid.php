@@ -77,10 +77,10 @@
                         	$result=array();
                         	$result=$_REQUEST['response'];
                         	$size=count($result);
-                            for($i = 0; $i < $size; $i++) {
+                            for($i = 0; $i < $size; $i++) {                            	
                         ?>
                                 <tr>
-                                    <td><a href="./child_profile.php"><?php echo $result[$i]['name'];?></a></td>
+                                    <td><a href="./child_profile.php?id1=<?php echo $result[$i]['salt'];?>&id2=<?php echo $result[$i]['id'];?>"><?php echo $result[$i]['name'];?></a></td>
                                     <td><?php echo $result[$i]['age']; ?></td>
                                     <td><?php $gender=($result[$i]['gender']=="M"?"Male":"Female"); echo $gender;?></td>
                                     <td><?php echo $result[$i]['city'].", ".$result[$i]['state']; ?></td>

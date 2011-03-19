@@ -3,7 +3,7 @@ require_once "model/model_manager.php";
 require_once "util/log4php/Logger.php";
 
 Class ModelSearch{
-	private static $SEARCH_CHILD_BASIC="select c.name as name, c.age as age, c.gender as gender, a.city as city, a.state as state 
+	private static $SEARCH_CHILD_BASIC="select distinct c.child_id as id,c.salt as salt,c.name as name, c.age as age, c.gender as gender, a.city as city, a.state as state 
 					from child c, address a, rel_reporter_child_address r  
 					where r.rca_child_id=c.child_id and r.rca_address_id=a.address_id ";
 	private $where_clause_partial="";

@@ -18,7 +18,7 @@
 							
 			$srchcontroller=new SearchController();
 			$result=$srchcontroller->action_performBasicSearch($param);
-			echo "Printing result ".PHP_EOL;
+			echo "Printing result ".gettype($result).PHP_EOL;
 			foreach($result as $row){
 				foreach($row as $key=>$value){
 					if(!is_numeric($key))
