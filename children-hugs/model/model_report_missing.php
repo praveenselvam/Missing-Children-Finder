@@ -7,8 +7,8 @@
 	
 	 class ModelReportMissing {
 		
-		public static $ADD_CHILD = "INSERT INTO child(name,gender,dob,age,salt)
-									 VALUES(:name,:gender,:dob,:age,:salt)";
+		public static $ADD_CHILD = "INSERT INTO child(name,gender,dob,age,salt,missing_since)
+									 VALUES(:name,:gender,:dob,:age,:salt,:missing_since)";
 		
 		public static $ADD_REPORTER = "INSERT INTO reporter(email,name,contact_number,salt) 
 										VALUES(:email,:name,:contact_number,:salt)";

@@ -10,7 +10,7 @@
 		
 		private $MISSING_POST_keep_reporter = array(
 										"child_status" => "LOST","child_name" => "Child Name",
-										"gender" => "M","dob" => null,"age" => "10",
+										"gender" => "M","dob" => null,"missing_since" => null,"age" => "10",
 										"street" => "Street","locality" => "Locality",
 										"city" => "City","state" => "State",
 										"country" => "Country","reporter_email" => "em@abc.com",
@@ -87,7 +87,7 @@
 			
 			$report_missing_controller = new ControllerReportMissing();			
 			$this->MISSING_POST_keep_reporter["dob"] = new DateTime();	
-			$this->MISSING_POST_keep_reporter["child_name"] = "Child Name_".mt_rand(0, 1500);	
+			$this->MISSING_POST_keep_reporter["child_name"] = "Child Name ";	
 			$report_missing_controller->post($this->MISSING_POST_keep_reporter);
 				
 				$SQL_READ_ALL_CHILDREN = "select * from child";

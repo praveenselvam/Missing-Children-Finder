@@ -3,9 +3,9 @@
 		public static $REPORT_CHILD_MISSING_MAP = array (
 			"child_name" => array( 
 								array (
-									"regex" => "/^[a-z\sA-Z'_]+$/",
+									"regex" => "/^[a-z\sA-Z']+$/",
 									"match" => "",
-									"no_match" => "Please enter alphabets only, allowed special characters are ' and _"
+									"no_match" => "Please enter alphabets only, allowed special characters are ' and"
 									   )
 								),
 			"gender" => array( 
@@ -22,6 +22,13 @@
 								"no_match" => "Invalid date of birth, use, year-month-day, e.g 2011-03-11, for March 11th 2011"
 									)
 						  ),
+			"missing_since" => array( 
+							 array (
+								"regex" => "/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/",
+								"match" => "",
+								"no_match" => "Invalid date, use, year-month-day, e.g 2011-03-11, for March 11th 2011"
+									)
+						  ),			  
 			"age" => array( 
 							array (
 								"regex" => "/^[0-9]+$/",

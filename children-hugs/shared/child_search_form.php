@@ -27,9 +27,12 @@
             <option>1 year</option>
             <option>More than a year</option>
         </select>
-        
-        <label class="span-2 clear">Photo:</label>
-        <a href="javascript: void(0);" class="span-3 last">Select file...</a>
+        <?php
+        	/* TODO: Not yet implemented. 
+        	<label class="span-2 clear">Photo:</label>
+        	<a href="javascript: void(0);" class="span-3 last">Select file...</a>
+        	*/
+        ?>
         
         <div class="buttons span-3 push-2 clear">
             <input type="submit" value="Search" class="span-2 button" />

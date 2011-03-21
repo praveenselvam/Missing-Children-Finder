@@ -5,7 +5,8 @@
 											"child_name" => "name",
 											"gender" => "gender",
 											"dob" => "dob",
-											"age" => "age"
+											"age" => "age",
+											"missing_since" =>"missing_since"
 										  );
 		public static $ADDRESS_INPUT_MAP = array (
 											"street" => "street",

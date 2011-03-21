@@ -34,6 +34,7 @@ CREATE TABLE child (
  name TINYTEXT NOT NULL,
  gender CHAR(1) NOT NULL,
  dob DATE,
+ missing_since DATE,
  age TINYINT DEFAULT -1,
  photo_url VARCHAR(1024),
  child_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -84,6 +85,12 @@ CREATE TABLE rel_child_status (
 	rcs_id  INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	rcs_child_id INT NOT NULL,
 	rcs_status_id INT NOT NULL
+)ENGINE=InnoDB;
+
+CREATE TABLE child_misc_info (
+	info_id  INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	info_child_id INT NOT NULL,
+	info_text TEXT NOT NULL
 )ENGINE=InnoDB;
 
 ##

@@ -11,17 +11,41 @@
 			self::configure();
 		}
 		
+		public function captcha_is_valid()
+		{
+			$resp = ModelValidator::validate_captcha();
+			if($resp -> is_valid)
+			{
+				return true;
+			}else{
+				$_REQUEST["user_request"] = $_POST;
+			  	$_REQUEST["validation_errors"] = array("captcha"=>$resp->error);
+			  	$_REQUEST["server_response"] = "ERROR";	
+			  	return false;		  	
+			}
+		}
+	
+		
 		public function post($post_array)
 		{
-			$report_missing_model = new ModelReportMissing();
+			  $report_missing_model = new ModelReportMissing();
 			
 			  $childInformation = $this->extractChildInformation($post_array);			  
 			  $reporterInformation = $this->extractReporterInformation($post_array);
 			  $addressInformation = $this->extractAddressInformation($post_array);
 			  $preferenceInformation = $this->extractPreferenceInformation($post_array);
 			
+			  $validation_array = $post_array;
+			  
+			  $post_array["missing_since"] = ("" == trim($post_array["missing_since"]))?null:trim($post_array["missing_since"]);
+			  
+			  if($post_array["missing_since"] == null)
+			  {
+			  	unset($validation_array["missing_since"]);
+			  }
+			  
 			  $validation_results = ModelValidator::validate(
-			  							$post_array,
+			  							$validation_array,
 			  							MissingChildValidationRules::$REPORT_CHILD_MISSING_MAP			  							
 			  							);
 			  /**
@@ -40,7 +64,11 @@
 			  }else{			  	
 			  	$_REQUEST["user_request"] = $post_array;
 			  	$_REQUEST["validation_errors"] = $validation_results;
-			  	$_REQUEST["server_response"] = "ERROR";			  	
+			  	$_REQUEST["server_response"] = "ERROR";
+			  		  	
+			  	/*foreach($validation_results as $k=>$v){
+			  		echo $k."=[".$post_array[$k]."]".$v.PHP_EOL;	
+			  	}*/			  				  	
 			  }
 			 															  	
 		}
@@ -80,6 +108,9 @@
 		}*/
 		
 		$controller = new ControllerReportMissing();
-		$controller->post($_POST);
+		if($controller->captcha_is_valid())
+		{		 
+			$controller->post($_POST);
+		}
 	}
 ?>

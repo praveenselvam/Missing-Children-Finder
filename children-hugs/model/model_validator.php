@@ -1,5 +1,17 @@
 <?php
+require_once('util/recaptchalib.php');
+
 class ModelValidator {
+	
+	public static $RECAPTCHA_PRIVATE_KEY = "6LejssISAAAAAITiLBJMbf6TrB2IzSBKscBz-bOf";
+	
+	public static function validate_captcha() {
+		$resp = recaptcha_check_answer (self::$RECAPTCHA_PRIVATE_KEY,
+                                $_SERVER["REMOTE_ADDR"],
+                                $_POST["recaptcha_challenge_field"],
+                                $_POST["recaptcha_response_field"]);
+		return $resp;
+	}
 	
 	public static function validate($source_parameters,$validation_map)
 	{
@@ -13,7 +25,7 @@ class ModelValidator {
 				{
 					$pattern =  $vk["regex"];
 					$subject = $value;				
-					if(!is_null($pattern) && $pattern !="")
+					if((!is_null($pattern) && $pattern !="") && gettype($subject) == "string")
 					{ 
 						if(preg_match($pattern, $subject))
 						{

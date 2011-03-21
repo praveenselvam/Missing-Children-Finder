@@ -65,6 +65,11 @@
     	                <div class="span-15 last">
     	                    <input type="text" name="age" class="span-6" value="<?php echo $result["age"];?>" />
     	                </div>
+    	                
+    	                <label class="span-3 clear">Missing Since:</label>
+    	                <div class="span-15 last">
+    	                    <input type="text" name="missing_since" class="span-6" value="<?php echo $result["missing_since"];?>" />
+    	                </div>
 	                
     	                <label class="span-3 clear">Photos:</label>
     	                <input type="file" name="child_photo"/>
@@ -126,8 +131,12 @@
         	                <input type="checkbox" id="i_vounteer" name="i_vounteer" <?php echo ($result["i_vounteer"] =="on")?"checked":"";?>/>
         	                <label for"i_vounteer">I volunteer to help children living around my location get back to their homes.</label>
         	            </div>
+        	            
+        	            <div class="span-15 push-3 clear last no_bottom_space">
+        	             	<?php include 'shared/captcha.php'; ?>   
+        	            </div>
     	            </fieldset>
-
+					
 	                <div class="section clearfix">
 	                    <input type="submit" value="Submit" class="push-3 span-2 button" />
 	                </div>

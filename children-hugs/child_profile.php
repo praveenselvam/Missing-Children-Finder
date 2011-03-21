@@ -31,14 +31,15 @@
                 <h2><?php echo $_REQUEST['response'][0]['name']; ?></h2>
                 <h3>
                     <?php echo (($_REQUEST['response'][0]['gender']) == "M" )?"Male":"Female"; ?>,
-                    <?php echo $_REQUEST['response'][0]['age']; ?> years | Lives within 10 kms from your location.
+                    <?php echo $_REQUEST['response'][0]['age']; ?> years <?php /* TODO: Not implemented yet | Lives within 10 kms from your location. */ ?>
                 </h3>
                 <div class="info">
-                    This child was orphaned recently and is now under safe custody. Some information about the child's home is available, which can be found below. We need help in reaching out to them and letting folks at home know that the child is here.
+                     This child was <?php echo (($_REQUEST['response'][0]['status']) == "LOST" )?"lost":"orphaned"; ?>                     
+                     recently and is now under safe custody. Some information about the child's home is available, which can be found below. We need help in reaching out to them and letting folks at home know that the child is here.
                 </div>
                 <dl>
                     <dt>Missing since:</dt>
-                    <dd>2 years</dd>
+                    <dd><?php echo ($_REQUEST['response'][0]['missing_since'] == null || "" == trim($_REQUEST['response'][0]['missing_since']))?"Uknown":$_REQUEST['response'][0]['missing_since']; ?></dd>
                     
                     <dt>Home Address:</dt>
                     <dd><?php echo $_REQUEST['response'][0]['locality']; ?>,
@@ -52,13 +53,18 @@
                         His Occupation: Dobhi<br/>
                         Mother Tongue: Tamil
                     </dd>
-                </dl>
-
-                <h4>Know more information about Kannan?</h4>
-                <label>Enter it here:</label>
-                <textarea></textarea>
-                
-                <input type="button" value="Save" class="right" />
+                </dl>                
+                <form>
+                	<h4>Know more information about Kannan?</h4>
+                	<label>Enter it here:</label>
+	                <textarea></textarea>
+	                <input type="hidden" value="<?php echo ($_REQUEST["id1"]);?>" name="id1"/>
+	                <input type="hidden" value="<?php echo ($_REQUEST["id2"]);?>" name="id2"/>
+	                
+	                <?php include 'shared/captcha.php'; ?>
+	                
+	                <input type="button" value="Save" class="right" />
+	            </form>
             </div>
         </div>
     </body>
