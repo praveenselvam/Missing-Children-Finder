@@ -11,19 +11,7 @@
 			self::configure();
 		}
 		
-		public function captcha_is_valid()
-		{
-			$resp = ModelValidator::validate_captcha();
-			if($resp -> is_valid)
-			{
-				return true;
-			}else{
-				$_REQUEST["user_request"] = $_POST;
-			  	$_REQUEST["validation_errors"] = array("captcha"=>$resp->error);
-			  	$_REQUEST["server_response"] = "ERROR";	
-			  	return false;		  	
-			}
-		}
+		
 	
 		
 		public function post($post_array)

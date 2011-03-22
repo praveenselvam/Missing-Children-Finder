@@ -10,15 +10,32 @@
  										 and rs.rcs_status_id = cat.status_id 
  										 and c.salt =:salt and c.child_id =:child_id";
 		
+		private static  $CHILD_INFO = "select info_text,DATE_FORMAT(create_date,'%Y-%m-%d') as create_date from child_misc_info where info_child_id = :info_child_id 
+									   order by create_date asc limit 0,5";
+		
 		private static $ADD_CHILD_INFO = "insert into child_misc_info(info_child_id,info_text) values 
 										  ((select child_id from child where salt=:salt and child_id =:child_id),
-										  ?)";
+										  :info_text)";
 		
 		private $logger;
 	 		
 	 	public function  __construct() 
 	 	{
 	 		$this->logger = Logger::getLogger(__CLASS__);
+	 	}
+	 	
+	 	public function addChildInformation($post_array)
+	 	{
+	 		try {
+	 			
+	 			$RESULT = ModelManager::writeRecord(self::$ADD_CHILD_INFO,$post_array);
+	 				 			
+	 		}catch(Exception $e)
+	 		{
+	 			$this->logger->error($e);
+	 		}
+	 		return $RESULT;
+	 		
 	 	}
 	 	
 	 	public function getProfile($get_array)
@@ -36,9 +53,25 @@
 			}
 			return $RESULT;
 	 	}
+	 	
+		public function getAdditionalChildInfo($get_array)
+	 	{
+	 		$DB=DataBase::getInstance();
+	 		$RESULT = null;
+			try 
+			{				
+				$RESULT = ModelManager::transcationReadRecord(self::$CHILD_INFO, $get_array, $DB);
+				
+			}catch(Exception $e)
+			{
+				echo $e;
+				//$this->logger->error($e);
+			}
+			return $RESULT;
+	 	}
 	}
-	
-	/*$get_array = array ("salt"=>199334831,"child_id"=>1);
+	/*
+	$get_array = array ("salt"=>696820843,"child_id"=>1);
 	
 	$test = new ModelChildProfile();
 	$RES = $test->getProfile($get_array);
@@ -51,6 +84,18 @@
 		{
 			echo $k."=".$v.PHP_EOL;
 		}
-	}*/
+	}
+	$ga = array("info_child_id" => 1);
+	$RES = $test->getAdditionalChildInfo($ga);
 	
+	echo count($RES).PHP_EOL;
+	
+	foreach($RES as $row)
+	{		
+		foreach($row as $k=>$v)
+		{
+			echo $k."=".$v.PHP_EOL;
+		}
+	}
+	*/
 ?>

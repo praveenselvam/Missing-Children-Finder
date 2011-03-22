@@ -90,7 +90,8 @@ CREATE TABLE rel_child_status (
 CREATE TABLE child_misc_info (
 	info_id  INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	info_child_id INT NOT NULL,
-	info_text TEXT NOT NULL
+	info_text TEXT NOT NULL,
+	create_date TIMESTAMP NOT NULL DEFAULT NOW()
 )ENGINE=InnoDB;
 
 ##

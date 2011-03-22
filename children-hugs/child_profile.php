@@ -48,24 +48,43 @@
                     </dd>
                     
                     <dt>Other Information:</dt>
-                    <dd>
-                        Father's Name: Muthusamy<br/>
-                        His Occupation: Dobhi<br/>
-                        Mother Tongue: Tamil
-                    </dd>
+                    <?php
+                    	 $additionalInfo = $_REQUEST['add_info'];
+                    ?>
+                    <?php
+                    	if(empty($additionalInfo))
+                    	{ 
+                    ?>
+                    	<dd>
+                    		No additional information found.
+                    	</dd>	
+                    <?php }else {
+                    	foreach($additionalInfo as $info)
+                    	{
+                    ?>
+	                    <dd>
+	                    	<?php echo nl2br(htmlentities($info["create_date"], ENT_QUOTES, "UTF-8"));?>
+	                        <?php echo nl2br(htmlentities($info["info_text"], ENT_QUOTES, "UTF-8"));?>
+	                    </dd>
+                    <?php
+                    	} 
+                    }?>
                 </dl>                
-                <form>
-                	<h4>Know more information about Kannan?</h4>
+                <form method="POST" action="child_profile.php?id1=<?php echo ($_REQUEST["id1"]);?>&id2=<?php echo ($_REQUEST["id2"]);?>">
+                	<h4>Know more information about <?php echo $_REQUEST['response'][0]['name']; ?>?</h4>
                 	<label>Enter it here:</label>
-	                <textarea></textarea>
+	                <textarea name="profile_text">
+	                	
+	                </textarea>
 	                <input type="hidden" value="<?php echo ($_REQUEST["id1"]);?>" name="id1"/>
 	                <input type="hidden" value="<?php echo ($_REQUEST["id2"]);?>" name="id2"/>
 	                
 	                <?php include 'shared/captcha.php'; ?>
 	                
-	                <input type="button" value="Save" class="right" />
+	                <input type="submit" value="Save" class="right" />
 	            </form>
             </div>
         </div>
+         <?php include 'shared/errors_to_browser.php'; ?>
     </body>
 </html>
