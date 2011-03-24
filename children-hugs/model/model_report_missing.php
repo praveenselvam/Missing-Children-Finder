@@ -7,8 +7,8 @@
 	
 	 class ModelReportMissing {
 		
-		public static $ADD_CHILD = "INSERT INTO child(name,gender,dob,age,salt,missing_since)
-									 VALUES(:name,:gender,:dob,:age,:salt,:missing_since)";
+		public static $ADD_CHILD = "INSERT INTO child(name,gender,dob,age,salt,missing_since,photo_url)
+									 VALUES(:name,:gender,:dob,:age,:salt,:missing_since,:photo_url)";
 		
 		public static $ADD_REPORTER = "INSERT INTO reporter(email,name,contact_number,salt) 
 										VALUES(:email,:name,:contact_number,:salt)";
@@ -57,7 +57,7 @@
 		
 		public function process_photo($photo_id) {
 			$upload_handler = new Upload();			
-			$upload_handler->upload_photo($photo_id);
+			return $upload_handler->upload_photo($photo_id);
 		}
 		
 		public function reportMissingChild($childInformation,
@@ -87,11 +87,13 @@
 						
 				$TRANSCATION_SALT = mt_rand(0, mt_getrandmax());
 				
-				$this->process_photo($TRANSCATION_SALT);
+				$photo_file_name = $this->process_photo($TRANSCATION_SALT);
 				
 				$_info = null;				
 				$_info = $childInformation;
 				$_info["salt"] = $TRANSCATION_SALT;
+				$_info["photo_url"] = $photo_file_name;
+				
 				$insert_child_status = ModelManager::transcationWriteRecord(self::$ADD_CHILD, $_info, $DB);
 				
 				// TODO: externalize this lookup. The map could change and we'd have no clue here.

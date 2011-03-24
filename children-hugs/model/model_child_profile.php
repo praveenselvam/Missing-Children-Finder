@@ -3,7 +3,7 @@
 	require_once "util/log4php/Logger.php";
 	
 	class ModelChildProfile {
-		private static $CHILD_PROFILE = "select distinct c.name as name, c.age as age,c.missing_since as missing_since, c.gender as gender,
+		private static $CHILD_PROFILE = "select distinct c.photo_url as photo,c.name as name, c.age as age,c.missing_since as missing_since, c.gender as gender,
 										 a.locality as locality, a.city as city, a.state as state,cat.status_name as status 
  										 from child c, address a, rel_reporter_child_address r,rel_child_status rs,status_catalog cat   
  										 where r.rca_child_id=c.child_id and r.rca_address_id=a.address_id and rs.rcs_child_id = c.child_id

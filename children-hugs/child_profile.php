@@ -1,4 +1,5 @@
  <?php include 'controller/child_profile_controller.php'; ?>
+ <?php include_once 'config/app_config.php';?>
  
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -25,7 +26,8 @@
             <?php include 'shared/left_pane.php'; ?>
             
             <div class="span-5">
-                <img src="http://1.bp.blogspot.com/_su4BWzt0qII/Sc-oK-XUYuI/AAAAAAAAAFY/pGKoKNQ4IWs/s400/azharuddin.jpg" style="width: 100%;" />
+            	<?php //http://1.bp.blogspot.com/_su4BWzt0qII/Sc-oK-XUYuI/AAAAAAAAAFY/pGKoKNQ4IWs/s400/azharuddin.jpg ?>
+                <img src="images/<?php echo (($_REQUEST['response'][0]['photo']) != null )?"/uploads/rz_".($_REQUEST['response'][0]['photo']):"unknown.jpeg"; ?>" style="width: 100%;" />
             </div>
             <div class="span-13 last">
                 <h2><?php echo $_REQUEST['response'][0]['name']; ?></h2>
