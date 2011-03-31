@@ -6,6 +6,7 @@
             
             this._bindEvents();
             this.refresh();
+            this.showerrors();
             
         },
         
@@ -27,6 +28,16 @@
                     $(this).click();
                 }
             });
+        },
+        
+        showerrors: function() {
+        		//alert(PAGE_ERRORS.length);
+        		$(PAGE_ERRORS).each(function(index,item) {
+        			for(var key in item)
+        			{
+        				$('#err_'+key).html(item[key]);
+        			}
+        		});
         }
         
     });

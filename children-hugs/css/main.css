@@ -80,3 +80,11 @@ fieldset legend {
 }
 .float_all_left * { float: left; }
 .text_right { text-align: right; }
+
+.error_cstm {
+	color:#F53E2A;
+	display:block;
+	font-size: 14px !important;
+	margin-left:120px;
+	/*display:none;*/
+}

@@ -2,6 +2,7 @@
 	require_once "model/model_child_profile.php";	
 	require_once "model/model_validator.php";	
 	require_once "controller/base_controller.php";
+	require_once "util/util_html.php";
 	
 	class ControllerChildProfile  extends ControllerBaseAction  
 	{
@@ -23,10 +24,14 @@
 		{
 			$model = new ModelChildProfile();
 			$_REQUEST["response"] = $model->getProfile($params);
-									
+
+			HtmlUtils::sanitizeForBrowser($_REQUEST["response"]);
+			
 			$info_array["info_child_id"] = $params["child_id"];			
 			
 			$_REQUEST["add_info"] = $model->getAdditionalChildInfo($info_array);
+			
+			HtmlUtils::sanitizeForBrowser($_REQUEST["add_info"]);
 			
 			if($_REQUEST["response"] == null)
 			{

@@ -5,7 +5,7 @@
 								array (
 									"regex" => "/^[a-z\sA-Z']+$/",
 									"match" => "",
-									"no_match" => "Please enter alphabets only, allowed special characters are ' and"
+									"no_match" => "Please enter alphabets only, allowed special character is '"
 									   )
 								),
 			"gender" => array( 
@@ -31,9 +31,9 @@
 						  ),			  
 			"age" => array( 
 							array (
-								"regex" => "/^[0-9]+$/",
+								"regex" => "/^[1-9]{1,2}$/",
 								"match" => "",
-								"no_match" => "Please specify your age"
+								"no_match" => "Please specify a valid age"
 							)
 						),
 			"street" => array( 

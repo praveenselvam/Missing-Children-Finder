@@ -65,8 +65,8 @@
                     	{
                     ?>
 	                    <dd>
-	                    	<?php echo nl2br(htmlentities($info["create_date"], ENT_QUOTES, "UTF-8"));?>
-	                        <?php echo nl2br(htmlentities($info["info_text"], ENT_QUOTES, "UTF-8"));?>
+	                    	<strong><?php echo nl2br(htmlentities($info["create_date"], ENT_QUOTES, "UTF-8"));?></strong>
+	                        <dd><?php echo nl2br(htmlentities($info["info_text"], ENT_QUOTES, "UTF-8"));?></dd>
 	                    </dd>
                     <?php
                     	} 

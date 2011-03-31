@@ -4,6 +4,7 @@
 	require_once "model/model_validator.php";
 	require_once "rules/search_child_validation_rules.php";
 	require_once "controller/base_controller.php";
+	require_once "util/util_html.php";
 	
 	
 	class SearchController extends ControllerBaseAction 
@@ -27,7 +28,7 @@
 				 foreach ($param_map as $k=>$v)
 				 {
 				 	if($v!=null && !empty($v))
-				 	{
+				 	{	
 				 		$validation_map[$k] = $v;
 				 	}
 				 }
@@ -41,15 +42,20 @@
 					$search_model=new ModelSearch();
 					$final_param_map=array();
 					$final_param_map=ControllerParameterMap::extractionHelper
-										(ControllerParameterMap::$SEARCH_CHILD_MAP,$param_map);					
+										(ControllerParameterMap::$SEARCH_CHILD_MAP,$param_map);
+										
 					try {
 						$result=$search_model->basicSearch($final_param_map);
+						
+						HtmlUtils::sanitizeForBrowser($result);
+						
 						$_REQUEST['response']= $result;	
 					}catch(Exception $e)
-					{
+					{	
 						Logger::getLogger(__CLASS__)->error($e);
 					}
 			  	}else{
+			  		HtmlUtils::sanitizeForBrowser($param_map);
 			  		$_REQUEST["user_request"] = $param_map;
 			  		$_REQUEST["validation_errors"] = $validation_results;
 			  		$_REQUEST["server_response"] = "ERROR";

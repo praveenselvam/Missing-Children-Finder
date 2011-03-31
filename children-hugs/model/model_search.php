@@ -23,9 +23,11 @@ Class ModelSearch{
 	public function basicSearch($params)
 	{		
 		$DB=DataBase::getInstance();
+		
 		try {
 			// where clause needs to be tweaked based on user input
 			// mundane implementation
+						
 			if($params['name']!=NULL && $params['name']!="")
 			{
 				$this->where_clause_partial="c.name like :name";

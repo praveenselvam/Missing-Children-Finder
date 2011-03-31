@@ -38,9 +38,9 @@
                     <?php
                     	$header="";
                     	if($_GET['gender']!=""){
-                    		if($_GET['gender']="M")
+                    		if($_GET['gender']=="M")
                     			$header="male children ";
-                    		else if($_GET['gender']="F")
+                    		else if($_GET['gender']=="F")
                     			$header="female children ";
                     		else
                     			$header="children ";

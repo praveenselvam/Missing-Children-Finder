@@ -24,6 +24,7 @@
 			  $preferenceInformation = $this->extractPreferenceInformation($post_array);
 			
 			  $validation_array = $post_array;
+			  			  
 			  
 			  $post_array["missing_since"] = ("" == trim($post_array["missing_since"]))?null:trim($post_array["missing_since"]);
 			  
@@ -31,6 +32,16 @@
 			  {
 			  	unset($validation_array["missing_since"]);
 			  }
+			  
+	 		foreach ($validation_array as $k=>$v)
+			 {
+			 	if($v!=null && !empty($v))
+			 	{	
+			 		$validation_array[$k] = $v;
+			 	}else{
+			 		unset($validation_array[$k]);
+			 	}
+			 }
 			  
 			  $validation_results = ModelValidator::validate(
 			  							$validation_array,
@@ -41,7 +52,7 @@
 			   * we need to turn back here in case the upload failed.
 			   */							
 			  							
-			  if(count($validation_results) == 0)
+			  if(count($validation_results) == 0 && count($validation_array) >0 )
 			  {	
 			  	$action_result = $report_missing_model->reportMissingChild($childInformation,
 															  $reporterInformation,
@@ -96,7 +107,7 @@
 		}*/
 		
 		$controller = new ControllerReportMissing();
-		if($controller->captcha_is_valid())
+		//if($controller->captcha_is_valid())
 		{		 
 			$controller->post($_POST);
 		}
