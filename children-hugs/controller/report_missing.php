@@ -107,7 +107,7 @@
 		}*/
 		
 		$controller = new ControllerReportMissing();
-		//if($controller->captcha_is_valid())
+		if($controller->captcha_is_valid())
 		{		 
 			$controller->post($_POST);
 		}
