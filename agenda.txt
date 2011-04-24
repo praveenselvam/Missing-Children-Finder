@@ -1,0 +1,24 @@
+Product Manager : Praveen Selvam
+Presentation :  Rajesh
+Road map, expectation, dev sidekick : Allen
+Moral support, Lead developer : Sriram.
+
+Bugs: allenmathew.dev@gmail.com / forward to Sriram.
+
+- Road map:
+ - Beta test / user acceptance.
+ - Prod server data wipeout in 2 weeks.
+ - Data aggregration , address to lat long.
+ - Ip to location to map children missing from visitors area.
+ - facebook app.
+ - face detection. 
+
+Dev todo:
+ - Pincode mandatody.
+ - Pincode to lat long.
+ - geo spatial after lat long.
+ - full image backup.
+ - image croping.
+ - Prevent misuse or poivide data, validate child information access.
+ - Reporter relation with the child. Scaned copy of ID proff.
+ - child address tracking.

@@ -26,7 +26,9 @@
             
             <div class="span-18 middle_container last clearfix form" id="report_missing_child_form">
                 <form action="report_child.php" method="post"  enctype="multipart/form-data">
-                	<input type="hidden" name="form_action" value="REPORT_MISSING"/>
+                	<input type="hidden" name="form_action" value="<?php echo ($result["FORM_ACTION"] !=null)?$result["FORM_ACTION"]:"REPORT_MISSING";?>"/>
+                	<input type="hidden" name="id1" value="<?php echo ($result["id1"])?>"/>
+                	<input type="hidden" name="id2" value="<?php echo ($result["id2"])?>"/>
 	                <h2>Report a Missing Child</h2>
 	                
 	                <div class="section clearfix intent">

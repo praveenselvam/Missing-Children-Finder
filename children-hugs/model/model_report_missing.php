@@ -7,8 +7,8 @@
 	
 	 class ModelReportMissing {
 		
-		public static $ADD_CHILD = "INSERT INTO child(name,gender,dob,age,salt,missing_since,photo_url)
-									 VALUES(:name,:gender,:dob,:age,:salt,:missing_since,:photo_url)";
+		public static $ADD_CHILD = "INSERT INTO child(name,gender,dob,age,salt,missing_since,photo_url,child_status)
+									 VALUES(:name,:gender,:dob,:age,:salt,:missing_since,:photo_url,:child_status)";
 		
 		public static $ADD_REPORTER = "INSERT INTO reporter(email,name,contact_number,salt) 
 										VALUES(:email,:name,:contact_number,:salt)";
@@ -47,6 +47,49 @@
 							 VALUES((SELECT child_id from child where salt =:salt ),
 							 		(SELECT status_id from status_catalog where status_name =:child_status )
 							 	   )";
+		
+		public static $VIEW_PROFILE_FOR_EDIT = "select c.name as child_name,c.gender,c.dob,c.missing_since,c.age,c.photo_url,
+												a.street,a.locality,a.city,a.state,a.country,r.name as reporter_name,r.email as reporter_email,
+												r.contact_number as reporter_contact,c.child_status as child_status 
+												from child c,address a, reporter r
+												where c.child_id = :child_id and c.salt = :salt and r.salt = :salt and a.salt= :salt";
+		
+		public static $UPDATE_PROFILE_WITH_PHOTO = "update child c,address a, reporter r 
+										set c.name =:child_name ,
+										c.gender =:gender,
+										c.dob = :dob,
+										c.missing_since =:missing_since,
+										c.age =:age,
+										c.photo_url = :photo_url,
+										c.child_status = :child_status,
+										a.street =:street,
+										a.locality =:locality,
+										a.city =:city,
+										a.state =:state,
+										a.country =:country,
+										r.name = :reporter_name,
+										r.email = :reporter_email,
+										r.contact_number =:reporter_contact 										
+										where c.child_id = :child_id and c.salt = :salt and r.salt = :salt and a.salt= :salt";
+		
+		public static $UPDATE_PROFILE = "update child c,address a, reporter r 
+										set c.name =:child_name ,
+										c.gender =:gender,
+										c.dob = :dob,
+										c.missing_since =:missing_since,
+										c.age =:age,									
+										c.child_status = :child_status,
+										a.street =:street,
+										a.locality =:locality,
+										a.city =:city,
+										a.state =:state,
+										a.country =:country,
+										r.name = :reporter_name,
+										r.email = :reporter_email,
+										r.contact_number =:reporter_contact 										
+										where c.child_id = :child_id and c.salt = :salt and r.salt = :salt and a.salt= :salt";
+		
+		
 
  		private $logger;
  		
@@ -58,6 +101,57 @@
 		public function process_photo($photo_id) {
 			$upload_handler = new Upload();			
 			return $upload_handler->upload_photo($photo_id);
+		}
+		
+		public function viewProfileForEdit($param) 
+		{
+			try {							   	
+				
+				return  ModelManager::readRecord(self::$VIEW_PROFILE_FOR_EDIT, $param);				
+				
+			}catch(PDOException $pdo_e) {
+				$this->logger->error("Error reporting child : ".$pdo_e->getMessage());
+			}catch(Exception $e)
+			{
+				$this->logger->error("Error reporting child : ".$e->getMessage());
+			}
+			return null;
+		}
+		
+		public function updateInformation($param) 
+		{
+			$TRANSCATION_SALT = $param['salt'];							
+			$photo_file_name = $this->process_photo($TRANSCATION_SALT);
+			
+			//echo "<br/>Photo = " . $photo_file_name; 
+			
+			try {							   	
+				if($photo_file_name !=null)				
+				{
+					$param['photo_url'] = $photo_file_name;
+					
+					//echo "updating with photo<br/>";
+					
+					return  ModelManager::writeRecord(self::$UPDATE_PROFILE_WITH_PHOTO, $param);
+				}else{
+					//echo "updating without photo<br/>";
+					
+				//foreach ($param as $k=>$v){
+				//	echo $k."=".$v."</br>";
+				//}
+					
+					return  ModelManager::writeRecord(self::$UPDATE_PROFILE, $param);
+				}				
+				
+			}catch(PDOException $pdo_e) {
+				//echo $pdo_e;
+				$this->logger->error("Error reporting child : ".$pdo_e->getMessage());
+			}catch(Exception $e)
+			{
+				//echo $e;
+				$this->logger->error("Error reporting child : ".$e->getMessage());
+			}
+			return null;
 		}
 		
 		public function reportMissingChild($childInformation,
@@ -93,6 +187,7 @@
 				$_info = $childInformation;
 				$_info["salt"] = $TRANSCATION_SALT;
 				$_info["photo_url"] = $photo_file_name;
+				$_info["child_status"] = $auxInformation["child_status"];
 				
 				$insert_child_status = ModelManager::transcationWriteRecord(self::$ADD_CHILD, $_info, $DB);
 				
@@ -145,15 +240,18 @@
 				$salt_associate = null;
 				$salt_associate = array("salt" => $TRANSCATION_SALT,"child_status"=>$auxInformation["child_status"]);
 				
-				ModelManager::writeRecord(self::$RELATE_CHILD_STATUS, $salt_associate);
+				//ModelManager::writeRecord(self::$RELATE_CHILD_STATUS, $salt_associate);
+				
 				$CALL_STATUS = TRUE;
 				
 				$this->logger->info("Done reporting child...");
 				
 			}catch(PDOException $pdo_e) {
+				echo $pdo_e;
 				$this->logger->error("Error reporting child : ".$pdo_e->getMessage());
 			}catch(Exception $e)
 			{
+				echo $e;
 				$this->logger->error("Error reporting child : ".$e->getMessage());
 			}
 			return $CALL_STATUS;
